@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from './hero';
+import { Hero, Tower } from './hero';
 
 @Injectable()
 export class HeroService {
@@ -13,16 +13,28 @@ export class HeroService {
   
   constructor(private http: Http) { }
   
-  getHeroes(): Promise<Hero[]> {
+  getHeroes(id: number): Promise<Hero[]> {
     return this.http.get(this.heroesUrl)
                .toPromise()
                .then(response => response.json().data as Hero[])
                .catch(this.handleError);
   }
   
+  getTowers(): Promise<Tower[]> {
+      return this.http.get(this.heroesUrl)
+                 .toPromise()
+                 .then(response => response.json().data as Tower[])
+                 .catch(this.handleError);
+  }
+  
   getHero(id: number): Promise<Hero> {
     return this.getHeroes()
                .then(heroes => heroes.find(hero => hero.id === id));
+  }
+  
+  getTower(id: number): Promise<Tower> {
+      return this.getTowers()
+                 .then(towers => towers.find(tower => tower.id === id));
   }
   
   delete(id: number): Promise<void> {

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from './hero';
+import { Hero, Tower } from './hero';
 import { HeroService } from './hero.service';
-import { Router } from '@angular/router';
+//import { Router } from '@angular/router';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
@@ -13,16 +15,33 @@ import { Router } from '@angular/router';
 
 export class HeroesComponent implements OnInit {
   title = 'Tour of Heroes';
+  tower = Tower;
   heroes: Hero[];
   selectedHero: Hero;
   
   constructor(
-    private router: Router,
-    private heroService: HeroService) {
+    private heroService: HeroService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+  
+  ngOnInit(): void {
+    this.route.params.forEach((params: Params) => {
+      let id = +params['id'];
+      this.heroService.getTower(id)
+        .then(tower => this.tower = tower);
+    });
+    //console.log(this.tower);
+    this.getHeroes();
   }
+  //ngOnInit(): void {
+  //  this.getHeroes();
+  //}
   
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    //this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    //this.heroes = this.tower.heroes;
+    //console.log(this.heroes);
   }
   
   add(name: string): void {
@@ -44,8 +63,8 @@ export class HeroesComponent implements OnInit {
         });
   }
   
-  ngOnInit(): void {
-    this.getHeroes();
+  goBack(): void {
+    this.location.back();
   }
   
   onSelect(hero: Hero): void {

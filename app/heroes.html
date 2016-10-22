@@ -1,4 +1,5 @@
-<h1>{{title}}</h1>
+<div *ngIf="tower">
+<h1>{{tower.title}}</h1>
   <h2>My Heroes</h2>
   <div>
     <label>Hero name:</label> <input (keyup.enter)="add(heroName.value); heroName.value=''" #heroName />
@@ -6,17 +7,27 @@
       Add
     </button>
   </div>
-  <ul class="heroes">
-    <li *ngFor="let hero of heroes"
-      [class.selected]="hero === selectedHero"
+  <ul class="">
+    <li *ngFor="let hero of tower.heroes"
       (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+      <div *ngIf="hero.types=='password'">
+        <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
+        <label>{{hero.label}}</label>
+        <input type='{{hero.types}}' />
+      </div> 
+      <div *ngIf="hero.types=='text'">
+        <label>{{hero.label}}</label>
+        <input type='{{hero.types}}' />
+      </div>  
+      
       <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
     </li>
   </ul>
+  <button (click)="goBack()">Back</button>
 <div *ngIf="selectedHero">
   <h2>
     {{selectedHero.name | uppercase}} is my hero
   </h2>
   <button (click)="gotoDetail()">View Details</button>
+</div>
 </div>
