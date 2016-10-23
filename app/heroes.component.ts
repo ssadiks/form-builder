@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Hero, Tower } from './hero';
 import { HeroService } from './hero.service';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -15,11 +15,12 @@ import { Location } from '@angular/common';
 
 export class HeroesComponent implements OnInit {
   title = 'Tour of Heroes';
-  tower = Tower;
+  tower: Tower;
   heroes: Hero[];
   selectedHero: Hero;
   
   constructor(
+    private router: Router,
     private heroService: HeroService,
     private route: ActivatedRoute,
     private location: Location
@@ -31,18 +32,18 @@ export class HeroesComponent implements OnInit {
       this.heroService.getTower(id)
         .then(tower => this.tower = tower);
     });
-    //console.log(this.tower);
-    this.getHeroes();
+    //console.log(this.tower); 
+    //this.getHeroes();
   }
   //ngOnInit(): void {
   //  this.getHeroes();
   //}
   
-  getHeroes(): void {
+  //getHeroes(): void { 
     //this.heroService.getHeroes().then(heroes => this.heroes = heroes);
     //this.heroes = this.tower.heroes;
-    //console.log(this.heroes);
-  }
+    //console.log(this.heroes); 
+  //}
   
   add(name: string): void {
     name = name.trim();
@@ -54,11 +55,11 @@ export class HeroesComponent implements OnInit {
       });
   }
 
-  delete(hero: Hero): void {
+  delete(tower: Tower, hero: Hero): void {
     this.heroService
-        .delete(hero.id)
+        .deleteHero(tower.id, hero.id)
         .then(() => {
-          this.heroes = this.heroes.filter(h => h !== hero);
+          this.tower.heroes = this.tower.heroes.filter(h => h !== hero);
           if (this.selectedHero === hero) { this.selectedHero = null; }
         });
   }
@@ -72,7 +73,8 @@ export class HeroesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
+    console.log(this.selectedHero.id);
+    this.router.navigate(['/tower/' + this.tower.id + '/hero/' + this.selectedHero.id]);
   }
   
 }

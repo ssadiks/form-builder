@@ -30,6 +30,15 @@ export class DashboardComponent implements OnInit {
   //  this.router.navigate(link);
   //}
   
+  delete(tower: Tower): void {
+    this.heroService
+        .deleteTower(tower.id)
+        .then(() => {
+          this.towers = this.towers.filter(t => t !== tower);
+          //if (this.selectedHero === hero) { this.selectedHero = null; }
+        });
+  }
+  
   gotoTower(tower: Tower): void {
       let link = ['/tower', tower.id];
       this.router.navigate(link);

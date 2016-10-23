@@ -20,7 +20,7 @@
         <input type='{{hero.types}}' />
       </div>  
       
-      <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button>
+      <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
     </li>
   </ul>
   <button (click)="goBack()">Back</button>
@@ -28,6 +28,6 @@
   <h2>
     {{selectedHero.name | uppercase}} is my hero
   </h2>
-  <button (click)="gotoDetail()">View Details</button>
+  <button (click)="gotoDetail(tower.id, selectedHero.id)">View Details</button>
 </div>
-</div>
+</div> 

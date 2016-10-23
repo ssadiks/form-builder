@@ -6,6 +6,10 @@
     <label>name: </label>
     <input [(ngModel)]="hero.name" placeholder="name" (keyup.enter)="save()"/>
   </div>
+  <div>
+    <label>type: </label>
+    <span>{{hero.types}}</span>
+  </div>
   <button (click)="goBack()">Back</button>
   <button (click)="save()">Save</button>
 

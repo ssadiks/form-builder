@@ -3,6 +3,7 @@
   <div *ngFor="let tower of towers" (click)="gotoTower(tower)" class="col-1-4">
     <div class="module hero">
       <h4>{{tower.title}}</h4>
+      <button class="delete" (click)="delete(tower); $event.stopPropagation()">x</button>
     </div>
   </div>
 </div>
