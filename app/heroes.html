@@ -7,21 +7,13 @@
       Add
     </button>
   </div>
-  <ul class="">
-    <li *ngFor="let hero of tower.heroes"
-      (click)="onSelect(hero)">
-      <div *ngIf="hero.types=='password'">
-        <!--<span class="badge">{{hero.id}}</span> {{hero.name}}-->
-        <label>{{hero.label}}</label>
-        <input type='{{hero.types}}' />
-      </div> 
-      <div *ngIf="hero.types=='text'">
-        <label>{{hero.label}}</label>
-        <input type='{{hero.types}}' />
-      </div>  
-      
-      <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
-    </li>
+  <ul class="heroes">
+    <li *ngFor="let hero of tower.heroes" (click)="onSelect(hero)"
+      [class.selected]="hero === selectedHero">
+    <span class="badge">{{hero.id}}</span>
+    <span>{{hero.name}}</span>
+    <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+  </li>
   </ul>
   <button (click)="goBack()">Back</button>
 <div *ngIf="selectedHero">

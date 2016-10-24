@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Hero } from './hero';
+import { Hero, Tower } from './hero';
 import { HeroService } from './hero.service';
 
 
@@ -16,6 +16,7 @@ import { HeroService } from './hero.service';
 export class HeroDetailComponent implements OnInit {
   
     hero: Hero;
+    tower: Tower;
     
     constructor(
       private heroService: HeroService,
@@ -27,15 +28,19 @@ export class HeroDetailComponent implements OnInit {
       this.route.params.forEach((params: Params) => {
         let id = +params['id'];
         let idhero = +params['idhero'];
+        this.heroService.getTower(id)
+          .then(tower => this.tower = tower);
+        
         this.heroService.getHero(id, idhero)
           .then(hero => this.hero = hero);
+        
       });
     }
     goBack(): void {
       this.location.back();
     }
     save(): void {
-      this.heroService.update(this.hero)
+      this.heroService.update(this.tower)
         .then(() => this.goBack());
     }
 

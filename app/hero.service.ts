@@ -57,12 +57,12 @@ export class HeroService {
       .catch(this.handleError);
   }
   
-  update(hero: Hero): Promise<Hero> {
-    const url = `${this.towersUrl}/${hero.id}`;
+  update(tower: Tower): Promise<Tower> {
+    const url = `${this.towersUrl}/${tower.id}`;
     return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .put(url, JSON.stringify(tower), {headers: this.headers})
       .toPromise()
-      .then(() => hero)
+      .then(() => tower)
       .catch(this.handleError);
   }
   
