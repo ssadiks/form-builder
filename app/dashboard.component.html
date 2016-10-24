@@ -4,6 +4,7 @@
     <div class="module hero">
       <h4>{{tower.title}}</h4>
       <button class="delete" (click)="delete(tower); $event.stopPropagation()">x</button>
+      <button class="edit" (click)="gotoDetail(tower); $event.stopPropagation()">o</button>
     </div>
   </div>
 </div>

@@ -74,7 +74,7 @@ export class HeroesComponent implements OnInit {
 
   gotoDetail(): void {
     console.log(this.selectedHero.id);
-    this.router.navigate(['/tower/' + this.tower.id + '/hero/' + this.selectedHero.id]);
+    this.router.navigate(['/towers/' + this.tower.id + '/heroes/' + this.selectedHero.id]);
   }
   
 }

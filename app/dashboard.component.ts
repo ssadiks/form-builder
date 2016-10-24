@@ -39,8 +39,13 @@ export class DashboardComponent implements OnInit {
         });
   }
   
+  gotoDetail(tower: Tower): void {
+      let link = ['/towers/' + tower.id];
+      this.router.navigate(link);
+  }
+  
   gotoTower(tower: Tower): void {
-      let link = ['/tower', tower.id];
+      let link = ['/towers/' + tower.id + '/heroes'];
       this.router.navigate(link);
   }
 

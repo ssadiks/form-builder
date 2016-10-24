@@ -32,6 +32,7 @@ export class HeroService {
   
   deleteTower(idTower: number): Promise<void> {
       const url = `${this.towersUrl}/${idTower}`;
+      console.log(url);
       return this.http.delete(url, {headers: this.headers})
         .toPromise()
         .then(() => null)

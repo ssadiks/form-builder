@@ -13,6 +13,7 @@ import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
+import { DashboardDetailComponent }  from './dashboard-detail.component';
 import { HeroSearchComponent }  from './hero-search.component';
 import { HeroService }          from './hero.service';
 
@@ -31,6 +32,7 @@ import './rxjs-extensions';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
+    DashboardDetailComponent,
     HeroSearchComponent
   ],
   providers: [ HeroService ],

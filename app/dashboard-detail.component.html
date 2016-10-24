@@ -1,0 +1,12 @@
+<div *ngIf="tower">
+  <h2>{{tower.title}} details!</h2>
+  <div>
+    <label>id: </label>{{tower.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="tower.title" placeholder="title" (keyup.enter)="save()"/>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+
+</div>
