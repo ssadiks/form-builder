@@ -10,6 +10,7 @@ export class HeroService {
   
   private headers = new Headers({'Content-Type': 'application/json'});
   private towersUrl = 'app/towers';  // URL to web api
+  private heroesUrl = 'app/heroes';  // URL to web api
   
   constructor(private http: Http) { }
   
@@ -55,6 +56,14 @@ export class HeroService {
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
+  }
+  
+  createTower(title: string): Promise<Tower> {
+      return this.http
+        .post(this.towersUrl, JSON.stringify({title: title}), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json().data)
+        .catch(this.handleError);
   }
   
   update(tower: Tower): Promise<Tower> {

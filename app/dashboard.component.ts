@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   towers: Tower[] = [];
+  selectedTower: Tower;
 
   constructor(
     private router: Router,
@@ -25,10 +26,15 @@ export class DashboardComponent implements OnInit {
       .then(towers => this.towers = towers);
   }
 
-  //gotoDetail(hero: Hero): void {
-  //  let link = ['/detail', hero.id];
-  //  this.router.navigate(link);
-  //}
+  add(title: string): void {
+    title = title.trim();
+    if (!title) { return; }
+    this.heroService.createTower(title)
+      .then(tower => {
+        this.towers.push(tower);
+        this.selectedTower = null;
+      });
+  }
   
   delete(tower: Tower): void {
     this.heroService
