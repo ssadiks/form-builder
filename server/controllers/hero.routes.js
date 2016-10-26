@@ -19,39 +19,42 @@ router.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });	
 });
 
-// on routes that end in /heros
+// on routes that end in /heroes
 // ----------------------------------------------------
 router.route('/heroes')
 
-	// create a hero (accessed at POST http://localhost:8080/heros)
+	// create a hero (accessed at POST http://localhost:8080/heroes)
 	.post(function(req, res) {
 		
 		var hero = new Hero();		// create a new instance of the Hero model
-		hero.name = req.body.name;  // set the heros name (comes from the request)
+		hero.name = req.body.name;  // set the heroes name (comes from the request)
 
-		hero.save(function(err) {
-			if (err)
-				res.send(err);
-
-			res.json({ message: 'Hero created!' });
-		});
-
+    if(req.body.name === undefined) {
+      res.json({ message: 'Name is empty' });
+    } else {
+      hero.save(function(err) {
+        if (err)
+          res.send(err);
+  
+        res.json({ message: 'Hero created!' });
+      });
+    }
 		
 	})
 
-	// get all the heros (accessed at GET http://localhost:8080/api/heros)
+	// get all the heroes (accessed at GET http://localhost:8080/api/heroes)
 	.get(function(req, res) {
-		Hero.find(function(err, heros) {
+		Hero.find(function(err, heroes) {
 			if (err)
 				res.send(err);
 
-			res.json(heros);
+			res.json(heroes);
 		});
 	});
 
-// on routes that end in /heros/:hero_id
+// on routes that end in /heroes/:hero_id
 // ----------------------------------------------------
-router.route('/heros/:hero_id')
+router.route('/heroes/:hero_id')
 
 	// get the hero with that id
 	.get(function(req, res) {

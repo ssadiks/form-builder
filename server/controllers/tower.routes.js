@@ -6,6 +6,7 @@ var express    = require('express');
 var router = express.Router();
 
 var Tower     = require('./../models/tower.model');
+var Hero     = require('./../models/hero.model');
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -29,7 +30,20 @@ router.route('/towers')
 		var tower = new Tower();		// create a new instance of the Tower model
 		tower.title = req.body.title;  // set the towers name (comes from the request)
 		//console.log(req.body.heroes);
-		tower.heroes = req.body.heroes;
+    
+		var heroes = tower.heroes = req.body.heroes;
+    heroes.forEach(createHero);    
+    function createHero(element) {
+      var hero = new Hero();
+      hero.name = element.name;
+      hero.save(function(err) {
+			if (err)
+				res.send(err);
+
+		});
+      
+      console.log('creation du hero ' + element.name);
+    }
 		tower.save(function(err) {
 			if (err)
 				res.send(err);
@@ -65,7 +79,9 @@ router.route('/towers/:tower_id')
 
 	// update the tower with this id
 	.put(function(req, res) {
-		Tower.findById(req.params.tower_id, function(err, tower) {
+		Tower.findById(req.params.tower_id)
+         .populate('heroes')
+         .exec(function(err, tower) {
 
 			if (err)
 				res.send(err);
