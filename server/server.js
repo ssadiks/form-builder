@@ -16,10 +16,10 @@ var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/towers'); // connect to our database
 
 var routerTower = require('./controllers/tower.routes');
-var routerHero = require('./controllers/hero.routes');
+//var routerHero = require('./controllers/hero.routes');
 
 // REGISTER OUR ROUTES -------------------------------
-app.use('/api', [routerTower, routerHero]);
+app.use('/api', routerTower);
 //app.use('/api', routerHero);
 
 // START THE SERVER

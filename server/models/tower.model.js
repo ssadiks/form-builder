@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var TowerSchema = new Schema({
     title: String,
-    heroes: [{ type: Schema.Types.ObjectId, ref: 'Hero' }]
+    heroes: [{ id: false, name: String }]
 });
 
 module.exports = mongoose.model('Tower', TowerSchema);

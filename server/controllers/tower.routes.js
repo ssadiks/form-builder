@@ -6,7 +6,7 @@ var express    = require('express');
 var router = express.Router();
 
 var Tower     = require('./../models/tower.model');
-var Hero     = require('./../models/hero.model');
+//var Hero     = require('./../models/hero.model');
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -108,6 +108,66 @@ router.route('/towers/:tower_id')
 
 			res.json({ message: 'Successfully deleted' });
 		});
+	});
+  
+router.route('/towers/:tower_id/heroes')
+
+  .post(function(req, res) {
+    Tower.findById(req.params.tower_id, function(err, tower) {
+      function insertHero(element) {
+        if(element.name !== '')
+          tower.heroes.push(element);
+      }
+      if(tower) {
+        (req.body).forEach(insertHero);
+        
+        tower.save(function(err) {
+          if (err)
+            res.send(err);
+    
+          res.json({ message: 'Tower created!' });
+        });
+      } else {
+        res.json({ message: 'Tower doesn\'t exists' });
+      }
+		});
+      
+  });
+  
+router.route('/towers/:tower_id/heroes/:hero_id')
+  
+  // get the hero with that ids
+	.get(function(req, res) {
+		Tower.findOne({'heroes._id' : req.params.hero_id}, {'heroes.$': 1}, function(err, tower) {
+      if(tower) {
+        console.log(tower.heroes[0]._id);
+        if (err)
+          res.send(err);
+        res.json(tower.heroes);
+      } else {
+        res.json({ message: 'Hero doesn\'t exists' });
+      }
+		});
+	})
+  
+  // delete the hero with this ids
+	.delete(function(req, res) {
+    Tower.findOne({'heroes._id' : req.params.hero_id}, {'heroes.$': 1}, function(err, tower) {
+      if(tower) {
+        //console.log(tower.heroes[0]);
+        console.log('toto');
+        tower.update(
+          {$pull:{ heroes : {'_id':req.params.hero_id} }}), function(err, val) {
+          console.log('titi');
+          if (err)
+            res.send(err);
+          console.log(val);
+          res.json(tower.heroes);
+        }
+      } else {
+        res.json({ message: 'Hero doesn\'t exists' });
+      }
+		});		
 	});
 
 module.exports = router;
