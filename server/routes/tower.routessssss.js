@@ -1,5 +1,9 @@
+// create our router
+//var express    = require('express');
+//var router = express.Router();
+
 import { Router } from 'express';
-import * as PostController from '../controllers/post.controller';
+import * as PostController from './../controllers/tower.controller';
 const router = new Router();
 
 // Get all Posts
@@ -15,3 +19,4 @@ router.route('/towers/:tower_id/heroes').post(PostController.addPost);
 router.route('/towers/:tower_id/heroes/:hero_id').delete(PostController.deletePost);
 
 export default router;
+//module.exports = router;
