@@ -15,7 +15,7 @@ var rootApi = function (req, res) {
 
 /**
 * Create a tower
-* @param req
+* @param req (Tower Object)
 * @param res
 * @returns void
 */
@@ -70,7 +70,7 @@ var getTower = function (req, res) {
 
 /**
 * Update Tower
-* @param req
+* @param req (Tower object)
 * @param res
 * @returns void
 */
@@ -113,22 +113,32 @@ var deleteTower = function (req, res) {
 
 /**
 * Create Hero
-* @param req
+* @param req (Array of Hero Object or Hero Object)
 * @param res
 * @returns void
 */
 var createHero = function (req, res) {
   Tower.findById(req.params.tower_id, function(err, tower) {
 	function insertHero(element) {
-	  if(element.name !== '')
+		if(element.name === undefined)
+			return res.json({message: "Error : Waiting for a Hero Object"});
+		
 		tower.heroes.push(element);
 	}
 	if(tower) {
-	  (req.body).forEach(insertHero);
-	  
-	  tower.save(function(err) {
-		if (err)
-		  res.send(err);
+		// Check if Post is an array of object are just an object
+		if(Array.isArray(req.body)) {
+			(req.body).forEach(insertHero);
+		} else {
+			if(req.body.name === undefined)
+				return res.json({message: "Error : Waiting for a Hero Object"});
+			
+			tower.heroes.push(req.body);
+		}		
+		
+		tower.save(function(err) {
+		  if (err)
+			res.send(err);
   
 		res.json({ message: 'Heroes created!' });
 	  });
@@ -177,22 +187,26 @@ var deleteHero = function (req, res) {
   
 /**
 * Update Hero
-* @param req
+* @param req (Object Hero)
 * @param res
 * @returns void
 */
 var updateHero = function (req, res) {
-  Tower.update(
-	{"_id": req.params.tower_id, "heroes._id" : req.params.hero_id},
-	{ $set : {
-	  "heroes.$.name" : req.body.name
-	}},
-	function(err, val) {
-	  if (err)
-		  res.send(err);
-		res.json({ message: 'Hero updated' });
-	}
-  )
+	// If name is undefined
+	if(req.body.name === undefined)
+		return res.json({ message: 'Error : Waiting for a Hero Object' });
+		
+	Tower.update(
+	  {"_id": req.params.tower_id, "heroes._id" : req.params.hero_id},
+	  { $set : {
+		"heroes.$.name" : req.body.name
+	  }},
+	  function(err, val) {
+		if (err)
+			res.send(err);
+		  res.json({ message: 'Hero updated' });
+	  }
+	)
 }
 
 module.exports = {
