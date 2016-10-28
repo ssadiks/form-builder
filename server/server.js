@@ -15,12 +15,9 @@ var port     = process.env.PORT || 8080; // set our port
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://localhost/towers'); // connect to our database
 
-var routerTower = require('./controllers/tower.routes');
-//var routerHero = require('./controllers/hero.routes');
-
+var routerTower = require('./routes/tower.routes');
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', routerTower);
-//app.use('/api', routerHero);
 
 // START THE SERVER
 // =============================================================================
