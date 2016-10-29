@@ -25,7 +25,7 @@ export class DashboardDetailComponent implements OnInit {
     
     ngOnInit(): void {
       this.route.params.forEach((params: Params) => {
-        let id = +params['id'];
+        let id = params['id'];
         this.heroService.getTower(id)
           .then(tower => this.tower = tower);
       });
@@ -34,7 +34,7 @@ export class DashboardDetailComponent implements OnInit {
       this.location.back();
     }
     save(): void {
-      this.heroService.update(this.tower)
+      this.heroService.updateTower(this.tower)
         .then(() => this.goBack());
     }
 

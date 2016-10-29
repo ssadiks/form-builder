@@ -5,6 +5,15 @@ var Tower     = require('./../models/tower.model');
 var middleware = function (req, res, next) {
 	// do logging
 	console.log('Something is happening.');
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
+        //res.header("Access-Control-Allow-Credentials", "true");
+        res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+        //res.header("Access-Control-Allow-Headers", "Authorization, Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept");
+        //res.header("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        //res.header("Pragma", "no-cache"); // HTTP 1.0.
+        //res.addDateHeader("Expires", 0); // Proxies.
 	next();
 }
 

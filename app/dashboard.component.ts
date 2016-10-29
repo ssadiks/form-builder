@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   towers: Tower[] = [];
   selectedTower: Tower;
+  
 
   constructor(
     private router: Router,
@@ -38,7 +39,7 @@ export class DashboardComponent implements OnInit {
   
   delete(tower: Tower): void {
     this.heroService
-        .deleteTower(tower.id)
+        .deleteTower(tower._id)
         .then(() => {
           this.towers = this.towers.filter(t => t !== tower);
           //if (this.selectedHero === hero) { this.selectedHero = null; }
@@ -46,12 +47,12 @@ export class DashboardComponent implements OnInit {
   }
   
   gotoDetail(tower: Tower): void {
-      let link = ['/towers/' + tower.id];
+      let link = ['/towers/' + tower._id];
       this.router.navigate(link);
   }
   
   gotoTower(tower: Tower): void {
-      let link = ['/towers/' + tower.id + '/heroes'];
+      let link = ['/towers/' + tower._id + '/heroes'];
       this.router.navigate(link);
   }
 

@@ -1,10 +1,10 @@
 export class Hero {
-    id: number;
+    _id: number;
     name: string;
 }
 
 export class Tower {
-  id: number;
+  _id: number;
   title: string;
   heroes: Hero[];
 }

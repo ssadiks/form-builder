@@ -10,7 +10,7 @@
   <ul class="heroes">
     <li *ngFor="let hero of tower.heroes" (click)="onSelect(hero)"
       [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero.id}}</span>
+    <span class="badge">{{hero._id}}</span>
     <span>{{hero.name}}</span>
     <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
   </li>
@@ -20,6 +20,6 @@
   <h2>
     {{selectedHero.name | uppercase}} is my hero
   </h2>
-  <button (click)="gotoDetail(tower.id, selectedHero.id)">View Details</button>
+  <button (click)="gotoDetail(tower._id, selectedHero._id)">View Details</button>
 </div>
 </div> 

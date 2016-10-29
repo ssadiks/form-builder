@@ -26,8 +26,8 @@ export class HeroDetailComponent implements OnInit {
     
     ngOnInit(): void {
       this.route.params.forEach((params: Params) => {
-        let id = +params['id'];
-        let idhero = +params['idhero'];
+        let id = params['id'];
+        let idhero = params['idhero'];
         this.heroService.getTower(id)
           .then(tower => this.tower = tower);
         
@@ -40,7 +40,7 @@ export class HeroDetailComponent implements OnInit {
       this.location.back();
     }
     save(): void {
-      this.heroService.update(this.tower)
+      this.heroService.updateHero(this.tower._id, this.hero)
         .then(() => this.goBack());
     }
 

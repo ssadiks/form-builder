@@ -28,7 +28,8 @@ export class HeroesComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.params.forEach((params: Params) => {
-      let id = +params['id'];
+      let id = params['id'];
+      console.log(id);
       this.heroService.getTower(id)
         .then(tower => this.tower = tower);
     });
@@ -48,7 +49,7 @@ export class HeroesComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.create(name)
+    this.heroService.createHero(name)
       .then(hero => {
         this.heroes.push(hero);
         this.selectedHero = null;
@@ -57,7 +58,7 @@ export class HeroesComponent implements OnInit {
 
   delete(tower: Tower, hero: Hero): void {
     this.heroService
-        .deleteHero(tower.id, hero.id)
+        .deleteHero(tower._id, hero._id)
         .then(() => {
           this.tower.heroes = this.tower.heroes.filter(h => h !== hero);
           if (this.selectedHero === hero) { this.selectedHero = null; }
@@ -73,8 +74,8 @@ export class HeroesComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    console.log(this.selectedHero.id);
-    this.router.navigate(['/towers/' + this.tower.id + '/heroes/' + this.selectedHero.id]);
+    console.log(this.selectedHero._id);
+    this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + this.selectedHero._id]);
   }
   
 }
