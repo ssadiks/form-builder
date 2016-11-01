@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero, Tower } from './hero';
-import { HeroService } from './hero.service';
+import { Hero, Tower } from '../shared/hero';
+import { HeroService } from '../shared/hero.service';
 import { Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-dashboard',
-  templateUrl: 'dashboard.component.html',
-  styleUrls: [ 'dashboard.component.css' ]
+  selector: 'towers-list',
+  templateUrl: 'towers-list.component.html',
+  styleUrls: [ 'towers-list.component.css' ]
 })
 
-export class DashboardComponent implements OnInit {
+export class TowersComponent implements OnInit {
 
   towers: Tower[] = [];
   selectedTower: Tower;

@@ -11,12 +11,12 @@ import { InMemoryDataService }  from './in-memory-data.service';
 //import { InMemoryyDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
-import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { DashboardDetailComponent }  from './dashboard-detail.component';
-import { HeroSearchComponent }  from './hero-search.component';
-import { HeroService }          from './hero.service';
+import { TowersComponent }   from './towers-list/towers-list.component';
+import { HeroesComponent }      from './heroes-list/heroes.component';
+import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
+import { TowerDetailComponent }  from './tower-detail/tower-detail.component';
+import { HeroSearchComponent }  from './hero-search/hero-search.component';
+import { HeroService }          from './shared/hero.service';
 
 import './rxjs-extensions';
 
@@ -31,10 +31,10 @@ import './rxjs-extensions';
   ],
   declarations: [
     AppComponent,
-    DashboardComponent,
+    TowersComponent,
     HeroDetailComponent,
     HeroesComponent,
-    DashboardDetailComponent,
+    TowerDetailComponent,
     HeroSearchComponent
   ],
   providers: [ HeroService ],

@@ -3,17 +3,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Tower } from './hero';
-import { HeroService } from './hero.service';
+import { Tower } from '../shared/hero';
+import { HeroService } from '../shared/hero.service';
 
 
 @Component({
     moduleId: module.id,
-    selector: 'dashboard-detail',
-    templateUrl: 'dashboard-detail.component.html',
-    styleUrls: [ 'dashboard-detail.component.css' ]
+    selector: 'tower-detail',
+    templateUrl: 'tower-detail.component.html',
+    styleUrls: [ 'tower-detail.component.css' ]
 })
-export class DashboardDetailComponent implements OnInit {
+export class TowerDetailComponent implements OnInit {
   
     tower: Tower;
     

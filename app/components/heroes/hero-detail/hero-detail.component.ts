@@ -3,8 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Hero, Tower } from './hero';
-import { HeroService } from './hero.service';
+import { Hero, Tower } from '../shared/hero';
+import { HeroService } from '../shared/hero.service';
 
 
 @Component({
@@ -45,9 +45,10 @@ export class HeroDetailComponent implements OnInit {
     goBack(): void {
       this.location.back();
     }
-    save(): void {
-      this.heroService.updateHero(this.tower._id, this.hero)
-        .then(() => this.goBack());
+    save(tower: Tower, h: Hero, isValid: boolean): void {
+      if(isValid)
+        this.heroService.updateHero(this.tower._id, this.hero)
+          .then(() => this.goBack());
     }
 
 

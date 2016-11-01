@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Hero, Tower } from './hero';
-import { HeroService } from './hero.service';
+import { Hero, Tower } from '../shared/hero';
+import { HeroService } from '../shared/hero.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location } from '@angular/common';
