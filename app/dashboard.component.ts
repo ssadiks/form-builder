@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   towers: Tower[] = [];
   selectedTower: Tower;
+  newTower: Tower;
   
 
   constructor(
@@ -28,13 +29,19 @@ export class DashboardComponent implements OnInit {
   }
 
   add(title: string): void {
+    this.newTower = new Tower();
     title = title.trim();
     if (!title) { return; }
-    this.heroService.createTower(title)
+    this.newTower.title = title;
+    this.newTower.heroes = [];
+    
+    console.log(this.towers);
+    this.heroService.createTower(this.newTower)
       .then(tower => {
         this.towers.push(tower);
         this.selectedTower = null;
       });
+      console.log(this.towers);
   }
   
   delete(tower: Tower): void {

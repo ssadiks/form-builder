@@ -32,19 +32,22 @@ var createTower = function (req, res) {
 	
 	var tower = new Tower();		// create a new instance of the Tower model
 	tower.title = req.body.title;  // set the towers name (comes from the request)
+  var dateNow = Date.now();
+  console.log(dateNow);
+	tower.date_created = dateNow; // changement d'heure pas pris en compte
 	
 	function createHero(element) {
-	  if(element.name !== '')
+	  //if(element.name !== '')
 		tower.heroes.push(element);
 	}    
 	var heroes = req.body.heroes;
 	heroes.forEach(createHero);
 
-	tower.save(function(err) {
+	tower.save(function(err, tower) {
 	  if (err)
-		res.send(err);
+      res.status(500).send(err);
 	
-	  res.json({ message: 'Tower created!' });
+	  res.json(tower);
 	});  
 }
 
@@ -143,19 +146,17 @@ var createHero = function (req, res) {
 				return res.json({message: "Error : Waiting for a Hero Object"});
 			
 			tower.heroes.push(req.body);
-		}		
-		
+		}				
 		tower.save(function(err) {
 		  if (err)
 			res.send(err);
-  
-		res.json({ message: 'Heroes created!' });
+    // send last hero in the array
+		res.json(tower.heroes[tower.heroes.length-1]);
 	  });
 	} else {
 	  res.json({ message: 'Tower doesn\'t exists' });
 	}
-	  });
-	
+	  });	
 }
     
 /**

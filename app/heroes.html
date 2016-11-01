@@ -2,8 +2,8 @@
 <h1>{{tower.title}}</h1>
   <h2>My Heroes</h2>
   <div>
-    <label>Hero name:</label> <input (keyup.enter)="add(heroName.value); heroName.value=''" #heroName />
-    <button (click)="add(heroName.value); heroName.value=''">
+    <label>Hero name:</label> <input (keyup.enter)="add(tower, heroName.value); heroName.value=''" #heroName />
+    <button (click)="add(tower, heroName.value); heroName.value=''">
       Add
     </button>
   </div>

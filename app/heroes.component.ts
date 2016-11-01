@@ -18,6 +18,7 @@ export class HeroesComponent implements OnInit {
   tower: Tower;
   heroes: Hero[];
   selectedHero: Hero;
+  newHero: Hero;
   
   constructor(
     private router: Router,
@@ -33,25 +34,17 @@ export class HeroesComponent implements OnInit {
       this.heroService.getTower(id)
         .then(tower => this.tower = tower);
     });
-    //console.log(this.tower); 
-    //this.getHeroes();
+
   }
-  //ngOnInit(): void {
-  //  this.getHeroes();
-  //}
   
-  //getHeroes(): void { 
-    //this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-    //this.heroes = this.tower.heroes;
-    //console.log(this.heroes); 
-  //}
-  
-  add(name: string): void {
+  add(tower: Tower, name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroService.createHero(name)
+    this.newHero = new Hero();
+    this.newHero.name = name;
+    this.heroService.createHero(tower, this.newHero)
       .then(hero => {
-        this.heroes.push(hero);
+        tower.heroes.push(hero);
         this.selectedHero = null;
       });
   }

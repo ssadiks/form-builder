@@ -15,11 +15,12 @@ export class HeroService {
   
   constructor(private http: Http) { }
   
-  createTower(title: string): Promise<Tower> {
+  //OK
+  createTower(tower: Tower): Promise<Tower> {
       return this.http
-        .post(this.towersUrl, JSON.stringify({title: title}), {headers: this.headers})
+        .post(this.towersUrl, JSON.stringify(tower), {headers: this.headers})
         .toPromise()
-        .then(res => res.json().data)
+        .then(res => res.json())
         .catch(this.handleError);
   }  
   
@@ -58,11 +59,12 @@ export class HeroService {
         .catch(this.handleError);
   }
   
-  createHero(name: string): Promise<Hero> {
+  createHero(tower: Tower, hero: Hero): Promise<Hero> {
+    const url = `${this.towersUrl}${tower._id}${this.heroesUrl}`;
     return this.http
-      .post(this.towersUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(url, JSON.stringify(hero), {headers: this.headers})
       .toPromise()
-      .then(res => res.json().data)
+      .then(res => res.json())
       .catch(this.handleError);
   }
   
