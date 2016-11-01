@@ -12,15 +12,15 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var towers_list_component_1 = require('./towers-list/towers-list.component');
 var tower_detail_component_1 = require('./tower-detail/tower-detail.component');
-var heroes_component_1 = require('./heroes-list/heroes.component');
+var heroes_list_component_1 = require('./heroes-list/heroes-list.component');
 var hero_detail_component_1 = require('./hero-detail/hero-detail.component');
 var routes = [
     { path: '', redirectTo: '/towers', pathMatch: 'full' },
     { path: 'towers', component: towers_list_component_1.TowersComponent },
-    { path: 'towers/:id/heroes', component: heroes_component_1.HeroesComponent },
+    { path: 'towers/:id/heroes', component: heroes_list_component_1.HeroesComponent },
     { path: 'towers/:id', component: tower_detail_component_1.TowerDetailComponent },
     { path: 'towers/:id/heroes/:idhero', component: hero_detail_component_1.HeroDetailComponent },
-    { path: 'heroes', component: heroes_component_1.HeroesComponent }
+    { path: 'heroes', component: heroes_list_component_1.HeroesComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

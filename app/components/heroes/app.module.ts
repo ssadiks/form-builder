@@ -12,7 +12,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
 import { TowersComponent }   from './towers-list/towers-list.component';
-import { HeroesComponent }      from './heroes-list/heroes.component';
+import { HeroesComponent }      from './heroes-list/heroes-list.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { TowerDetailComponent }  from './tower-detail/tower-detail.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';

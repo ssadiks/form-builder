@@ -8,9 +8,9 @@ import { Location } from '@angular/common';
 
 @Component({
     moduleId: module.id,
-    selector: 'my-heroes',
-    templateUrl: 'heroes.html',
-    styleUrls : ['heroes.css']
+    selector: 'heroes-list',
+    templateUrl: 'heroes-list.html',
+    styleUrls : ['heroes-list.css']
 })
 
 export class HeroesComponent implements OnInit {
@@ -41,24 +41,17 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      //_id: 0,
+      _id: '',
       name: '',
       power: this.powers[0].value,
       isChampion: false
     }
-    //console.log(this.powers[0].value);
 
-    console.log(this.newHero);
-    //console.log('titi');
 
   }
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
-    console.log(isValid);
-    //name = name.trim();
-    //if (!name) { return; }
-    //this.newHero = new Hero();
-    //this.newHero.name = name;
+
     if(isValid)
       this.heroService.createHero(tower, this.newHero)
         .then(hero => {

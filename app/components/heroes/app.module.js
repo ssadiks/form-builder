@@ -16,7 +16,7 @@ var app_routing_module_1 = require('./app-routing.module');
 //import { InMemoryyDataService }  from './in-memory-data.service';
 var app_component_1 = require('./app.component');
 var towers_list_component_1 = require('./towers-list/towers-list.component');
-var heroes_component_1 = require('./heroes-list/heroes.component');
+var heroes_list_component_1 = require('./heroes-list/heroes-list.component');
 var hero_detail_component_1 = require('./hero-detail/hero-detail.component');
 var tower_detail_component_1 = require('./tower-detail/tower-detail.component');
 var hero_search_component_1 = require('./hero-search/hero-search.component');
@@ -39,7 +39,7 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 towers_list_component_1.TowersComponent,
                 hero_detail_component_1.HeroDetailComponent,
-                heroes_component_1.HeroesComponent,
+                heroes_list_component_1.HeroesComponent,
                 tower_detail_component_1.TowerDetailComponent,
                 hero_search_component_1.HeroSearchComponent
             ],

@@ -34,22 +34,14 @@ var HeroesComponent = (function () {
                 .then(function (tower) { return _this.tower = tower; });
         });
         this.newHero = {
-            //_id: 0,
+            _id: '',
             name: '',
             power: this.powers[0].value,
             isChampion: false
         };
-        //console.log(this.powers[0].value);
-        console.log(this.newHero);
-        //console.log('titi');
     };
     HeroesComponent.prototype.add = function (tower, h, isValid) {
         var _this = this;
-        console.log(isValid);
-        //name = name.trim();
-        //if (!name) { return; }
-        //this.newHero = new Hero();
-        //this.newHero.name = name;
         if (isValid)
             this.heroService.createHero(tower, this.newHero)
                 .then(function (hero) {
@@ -81,13 +73,13 @@ var HeroesComponent = (function () {
     HeroesComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'my-heroes',
-            templateUrl: 'heroes.html',
-            styleUrls: ['heroes.css']
+            selector: 'heroes-list',
+            templateUrl: 'heroes-list.html',
+            styleUrls: ['heroes-list.css']
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService, router_2.ActivatedRoute, common_1.Location])
     ], HeroesComponent);
     return HeroesComponent;
 }());
 exports.HeroesComponent = HeroesComponent;
-//# sourceMappingURL=heroes.component.js.map
+//# sourceMappingURL=heroes-list.component.js.map
