@@ -1,16 +1,33 @@
 <div *ngIf="hero">
   <h2>{{hero.name}} details!</h2>
-  <div>
-    <label>id: </label>{{hero.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="hero.name" placeholder="name" (keyup.enter)="save()"/>
-  </div>
-  <div>
-    <label>type: </label>
-    <span>{{hero.types}}</span>
-  </div>
+
+  <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate>
+    <div>
+      <label>Hero Name</label>
+      <input type="text" name="name"  [(ngModel)]="hero.name" #name="ngModel" required>
+      <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+        Name is required
+      </small>
+    </div>
+
+    <div>
+        <label>Hero Role {{ hero.power }}</label>
+        <select name="power" [(ngModel)]="hero.power">
+            <option *ngFor="let power of powers" [value]="power.value">  
+            {{power.display}}
+            </option>
+        </select>
+    </div>
+    
+    <div>
+      <label>
+          <input type="checkbox" name="isChampion" [(ngModel)]="hero.isChampion" #isChampion="ngModel">
+          Is Champion
+      </label>
+    </div>
+
+      <button type="submit">Submit</button>
+  </form>
   <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
 
 </div>

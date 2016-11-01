@@ -20,6 +20,12 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   newHero: Hero;
   
+  public powers = [
+    { value: 'speed', display: 'Speed' },
+    { value: 'strength', display: 'Strength' },
+    { value: 'flexibility', display: 'Flexibility' }
+  ];
+  
   constructor(
     private router: Router,
     private heroService: HeroService,
@@ -27,26 +33,38 @@ export class HeroesComponent implements OnInit {
     private location: Location
   ) {}
   
-  ngOnInit(): void {
+  ngOnInit(): void {    
+    
     this.route.params.forEach((params: Params) => {
       let id = params['id'];
-      console.log(id);
       this.heroService.getTower(id)
         .then(tower => this.tower = tower);
     });
+    this.newHero = {
+      //_id: 0,
+      name: '',
+      power: this.powers[0].value,
+      isChampion: false
+    }
+    //console.log(this.powers[0].value);
+
+    console.log(this.newHero);
+    //console.log('titi');
 
   }
   
-  add(tower: Tower, name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.newHero = new Hero();
-    this.newHero.name = name;
-    this.heroService.createHero(tower, this.newHero)
-      .then(hero => {
-        tower.heroes.push(hero);
-        this.selectedHero = null;
-      });
+  add(tower: Tower, h: Hero, isValid: boolean): void {
+    console.log(isValid);
+    //name = name.trim();
+    //if (!name) { return; }
+    //this.newHero = new Hero();
+    //this.newHero.name = name;
+    if(isValid)
+      this.heroService.createHero(tower, this.newHero)
+        .then(hero => {
+          tower.heroes.push(hero);
+          this.selectedHero = null;
+        });
   }
 
   delete(tower: Tower, hero: Hero): void {

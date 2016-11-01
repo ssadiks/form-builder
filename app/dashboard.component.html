@@ -1,9 +1,19 @@
-<h3>Top Heroes</h3>
+<h1>List of Towers</h1>
 <div>
-  <label>Tower title:</label> <input (keyup.enter)="add(towerTitle.value); towerTitle.value=''" #towerTitle />
-  <button (click)="add(towerTitle.value); towerTitle.value=''">
-    Add
-  </button>
+    <h2>Add Tower</h2>
+    <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate>
+        <div>
+            <label>Title</label>
+            <input type="text" 
+                name="title" [(ngModel)]="newTower.title" 
+                #title="ngModel" required minlength="3">
+            <!--show error only when field is not valid & it's dirty or form submited-->
+            <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+                Title is required (minimum 3 characters).
+            </small>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
 </div>
 <div class="grid grid-pad">
   <div *ngFor="let tower of towers" (click)="gotoTower(tower)" class="col-1-4">

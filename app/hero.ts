@@ -1,9 +1,11 @@
-export class Hero {
+export interface Hero {
     _id: number;
     name: string;
+    power: string;
+    isChampion: boolean;    
 }
 
-export class Tower {
+export interface Tower {
   _id: number;
   title: string;
   heroes: Hero[];

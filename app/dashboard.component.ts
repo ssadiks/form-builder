@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   towers: Tower[] = [];
   selectedTower: Tower;
-  newTower: Tower;
+  public newTower: Tower;
   
 
   constructor(
@@ -24,24 +24,25 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.newTower = {
+      _id: 0,
+      title: '',
+      heroes: []
+    }
     this.heroService.getTowers()
       .then(towers => this.towers = towers);
   }
 
-  add(title: string): void {
-    this.newTower = new Tower();
-    title = title.trim();
-    if (!title) { return; }
-    this.newTower.title = title;
-    this.newTower.heroes = [];
-    
-    console.log(this.towers);
-    this.heroService.createTower(this.newTower)
-      .then(tower => {
-        this.towers.push(tower);
-        this.selectedTower = null;
-      });
-      console.log(this.towers);
+  add(t: Tower, isValid: boolean): void {
+
+    if(isValid)
+      this.newTower.heroes = [];
+      this.heroService.createTower(this.newTower)
+        .then(tower => {
+          this.towers.push(tower);
+          this.selectedTower = null;
+        });
+        console.log(this.towers);
   }
   
   delete(tower: Tower): void {

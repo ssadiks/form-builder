@@ -32,9 +32,9 @@ var createTower = function (req, res) {
 	
 	var tower = new Tower();		// create a new instance of the Tower model
 	tower.title = req.body.title;  // set the towers name (comes from the request)
-  var dateNow = Date.now();
+  /*var dateNow = Date.now();
   console.log(dateNow);
-	tower.date_created = dateNow; // changement d'heure pas pris en compte
+	tower.date_created = dateNow;*/ // changement d'heure pas pris en compte
 	
 	function createHero(element) {
 	  //if(element.name !== '')
@@ -149,7 +149,7 @@ var createHero = function (req, res) {
 		}				
 		tower.save(function(err) {
 		  if (err)
-			res.send(err);
+        res.send(err);
     // send last hero in the array
 		res.json(tower.heroes[tower.heroes.length-1]);
 	  });

@@ -18,6 +18,12 @@ export class HeroDetailComponent implements OnInit {
     hero: Hero;
     tower: Tower;
     
+    public powers = [
+      { value: 'speed', display: 'Speed' },
+      { value: 'strength', display: 'Strength' },
+      { value: 'flexibility', display: 'Flexibility' }
+    ];
+    
     constructor(
       private heroService: HeroService,
       private route: ActivatedRoute,

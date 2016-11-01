@@ -15,20 +15,19 @@ var TowerSchema = new Schema({
         required: 'Email address is required',
         validate: [validateEmail, 'Please fill a valid email address']
     },
-    date_created: Date,
     heroes: [{
       id: false,
       name: {
         type: String,
-        required: 'Nams is required'
+        required: 'Name is required'
       },
       power: {
         type: String,
         required: 'Power is required',
         trim: true,
-        enum: ['Speed', 'Strength', 'Flexibility']
+        enum: ['speed', 'strength', 'flexibility']
       },
-      champion: Boolean
+      isChampion: Boolean
       }]
 });
 

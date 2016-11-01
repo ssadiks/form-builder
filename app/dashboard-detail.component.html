@@ -1,12 +1,19 @@
 <div *ngIf="tower">
   <h2>{{tower.title}} details!</h2>
-  <div>
-    <label>id: </label>{{tower.id}}</div>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="tower.title" placeholder="title" (keyup.enter)="save()"/>
-  </div>
+  <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+    <div>
+        <label>Title</label>
+        <input type="text" 
+            name="title" [(ngModel)]="tower.title" 
+            #title="ngModel" required minlength="3">
+        <!--show error only when field is not valid & it's dirty or form submited-->
+        <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+            Title is required (minimum 3 characters).
+        </small>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
   <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <!--<button (click)="save()">Save</button>-->
 
 </div>
