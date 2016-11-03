@@ -13,7 +13,6 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_routing_module_1 = require('./app-routing.module');
-//import { InMemoryyDataService }  from './in-memory-data.service';
 var app_component_1 = require('./app.component');
 var towers_list_component_1 = require('./towers-list/towers-list.component');
 var heroes_list_component_1 = require('./heroes-list/heroes-list.component');

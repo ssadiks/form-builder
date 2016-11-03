@@ -41,7 +41,7 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      _id: '',
+      //_id: 7,
       name: '',
       power: this.powers[0].value,
       isChampion: false
