@@ -1,13 +1,6 @@
 <div *ngIf="tower">
-<h1>{{tower.title}}</h1>
-  <h2>My Heroes</h2>
-  <!--<div>
-    <label>Hero name:</label> <input (keyup.enter)="add(tower, heroName.value); heroName.value=''" #heroName />
-    <button (click)="add(tower, heroName.value); heroName.value=''">
-      Add
-    </button>
-  </div>-->
-  
+<h1>Tower : {{tower.title}}</h1>
+  <h2>Add Hero</h2>  
   <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate>
     <div>
       <label>Hero Name</label>
@@ -35,22 +28,44 @@
 
       <button type="submit">Submit</button>
   </form>
-  
-  <pre>{{ f.value | json }}</pre>
-  
-  <ul class="heroes">
-    <li *ngFor="let hero of tower.heroes" (click)="onSelect(hero)"
-      [class.selected]="hero === selectedHero">
-    <span class="badge">{{hero._id}}</span>
-    <span>{{hero.name}}</span>
-    <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
-  </li>
+
+  <h2>List of Heroes</h2>
+  <ul class="c-heroes-list">     
+    <li class="c-heroes-list__item" *ngFor="let hero of tower.heroes">
+      <div *ngIf="hero.power == 'speed'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Speed</span></div>
+        <div class="o-grid__item">
+          <div class="c-actions">
+            <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+            <button (click)="gotoDetail(hero)">o</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="hero.power == 'flexibility'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Flex</span></div>
+        <div class="o-grid__item">
+          <div class="c-actions">
+            <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+            <button (click)="gotoDetail(hero)">o</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="hero.power == 'strength'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Strength</span></div>
+        <div class="o-grid__item">
+          <div class="c-actions">
+            <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+            <button (click)="gotoDetail(hero)">o</button>
+          </div>
+        </div>
+      </div>
+    </li>
   </ul>
   <button (click)="goBack()">Back</button>
-<div *ngIf="selectedHero">
-  <h2>
-    {{selectedHero.name | uppercase}} is my hero
-  </h2>
-  <button (click)="gotoDetail(tower._id, selectedHero._id)">View Details</button>
-</div>
+<!--<div *ngIf="selectedHero">-->
+<!--  <h2>-->
+<!--    {{selectedHero.name | uppercase}} is my hero-->
+<!--  </h2>-->
+<!--  <button (click)="gotoDetail(tower._id, selectedHero._id)">View Details</button>-->
+<!--</div>-->
 </div> 

@@ -1,0 +1,17 @@
+/* responsive
+   ========================================================================== */
+
+// responsive large screens
+@media (max-width: $large-screen) {
+    div,
+    textarea,
+    table,
+    td,
+    th,
+    code,
+    pre,
+    samp {
+        hyphens: auto;
+        word-wrap: break-word;
+    }
+}

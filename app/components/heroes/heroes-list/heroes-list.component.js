@@ -19,7 +19,6 @@ var HeroesComponent = (function () {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
-        this.title = 'Tour of Heroes';
         this.powers = [
             { value: 'speed', display: 'Speed' },
             { value: 'strength', display: 'Strength' },
@@ -34,7 +33,7 @@ var HeroesComponent = (function () {
                 .then(function (tower) { return _this.tower = tower; });
         });
         this.newHero = {
-            //_id: 7,
+            //_id: null,
             name: '',
             power: this.powers[0].value,
             isChampion: false
@@ -63,12 +62,11 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.goBack = function () {
         this.location.back();
     };
-    HeroesComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
-    };
-    HeroesComponent.prototype.gotoDetail = function () {
-        console.log(this.selectedHero._id);
-        this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + this.selectedHero._id]);
+    //onSelect(hero: Hero): void {
+    //  this.selectedHero = hero;
+    //}
+    HeroesComponent.prototype.gotoDetail = function (hero) {
+        this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + hero._id]);
     };
     HeroesComponent = __decorate([
         core_1.Component({

@@ -1,0 +1,40 @@
+/* icons
+   ========================================================================== */
+
+// icons font
+@font-face {
+    font-family: "icons";
+    src: url("../fonts/icons/icons.woff2") format("woff2"),
+         url("../fonts/icons/icons.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+.c-icon::before, .c-icon-after::after {
+    position: relative;
+    top: -.05em;
+    display: inline-block;
+    margin: 0 em($extra-small-value) 0 0;
+    vertical-align: middle;
+    font: normal normal normal $line-height + em/0 icons;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.c-icon-after {
+    &::after {
+        margin: 0 0 0 em($extra-small-value);
+    }
+}
+
+// icons library
+
+.c-icon--facebook::before, .c-icon-after--facebook::after {
+    content: "\ea01";
+}
+.c-icon--google::before, .c-icon-after--google::after {
+    content: "\ea02";
+}
+.c-icon--twitter::before, .c-icon-after--twitter::after {
+    content: "\ea03";
+}

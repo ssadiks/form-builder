@@ -1,4 +1,4 @@
-[class*='col-'] {
+/*[class*='col-'] {
   float: left;
 }
 *, *:after, *:before {
@@ -58,3 +58,4 @@ h4 {
       min-width: 60px;
     }
 }
+*/

@@ -1,0 +1,53 @@
+/* imports
+   ========================================================================== */
+
+// import settings
+@import "settings/global-variables";
+@import "settings/color-variables";
+@import "settings/fonts";
+
+// import tools
+@import "tools/functions";
+@import "tools/mixins";
+
+// import generic
+@import "generic/normalize";
+
+// import base
+@import "base/base";
+@import "base/forms";
+@import "base/tables";
+@import "base/print";
+@import "base/responsive";
+
+// import objects
+@import "objects/grids";
+@import "objects/container";
+@import "objects/media";
+@import "objects/utilities";
+
+// import components
+@import "components/icons";
+
+// component tower list
+.c-forms-list__item {
+    border: 1px solid grey;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    @media only screen and (max-width : $small-screen) {
+        min-height: auto;
+    }
+} 
+//.c-forms-list__item .c-actions {
+//    position: absolute;
+//    bottom: 0;
+//    right: 0;
+//    @media only screen and (max-width : $small-screen) {
+//        position: static;
+//    }
+//}
+
+.o-container input[type="text"], .o-container select, .o-container textarea {
+    width: 100%;
+}  

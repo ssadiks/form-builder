@@ -14,7 +14,6 @@ import { Location } from '@angular/common';
 })
 
 export class HeroesComponent implements OnInit {
-  title = 'Tour of Heroes';
   tower: Tower;
   heroes: Hero[];
   selectedHero: Hero;
@@ -41,7 +40,7 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      //_id: 7,
+      //_id: null,
       name: '',
       power: this.powers[0].value,
       isChampion: false
@@ -73,13 +72,12 @@ export class HeroesComponent implements OnInit {
     this.location.back();
   }
   
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  //onSelect(hero: Hero): void {
+  //  this.selectedHero = hero;
+  //}
 
-  gotoDetail(): void {
-    console.log(this.selectedHero._id);
-    this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + this.selectedHero._id]);
+  gotoDetail(hero: Hero): void {
+    this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + hero._id]);
   }
   
 }

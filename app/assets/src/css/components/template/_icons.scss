@@ -1,0 +1,34 @@
+/* icons
+   ========================================================================== */
+
+// icons font
+@font-face {
+    font-family: "<%= fontName %>";
+    src: url("<%= fontPath %><%= fontName %>.woff2") format("woff2"),
+         url("<%= fontPath %><%= fontName %>.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+.c-<%= className %>::before, .c-<%= className %>-after::after {
+    position: relative;
+    top: -.05em;
+    display: inline-block;
+    margin: 0 em($extra-small-value) 0 0;
+    vertical-align: middle;
+    font: normal normal normal $line-height + em/0 <%= fontName %>;
+    text-transform: none;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.c-<%= className %>-after {
+    &::after {
+        margin: 0 0 0 em($extra-small-value);
+    }
+}
+
+// icons library
+<% _.each(glyphs, function(glyph) { %>
+.c-<%= className %>--<%= glyph.name %>::before, .c-<%= className %>-after--<%= glyph.name %>::after {
+    content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16) %>";
+}<% }); %>
