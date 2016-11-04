@@ -32,6 +32,7 @@ var createTower = function (req, res) {
 	
 	var tower = new Tower();		// create a new instance of the Tower model
 	tower.title = req.body.title;  // set the towers name (comes from the request)
+  tower.name = req.body.name;
   /*var dateNow = Date.now();
   console.log(dateNow);
 	tower.date_created = dateNow;*/ // changement d'heure pas pris en compte
@@ -93,6 +94,7 @@ var updateTower = function (req, res) {
 			res.send(err);
 
 		tower.title = req.body.title;
+		tower.name = req.body.name;
 		tower.heroes = req.body.heroes;
 		tower.save(function(err) {
 			if (err)
@@ -209,7 +211,13 @@ var updateHero = function (req, res) {
 	Tower.update(
 	  {"_id": req.params.tower_id, "heroes._id" : req.params.hero_id},
 	  { $set : {
-		"heroes.$.name" : req.body.name
+		"heroes.$.type_field" : req.body.type_field,
+    "heroes.$.name" : req.body.name,
+    "heroes.$.label" : req.body.label,
+    "heroes.$.help_text" : req.body.help_text,
+    "heroes.$.required" : req.body.required,
+    "heroes.$.placeholder" : req.body.placeholder,
+    "heroes.$.options_list" : req.body.options_list
 	  }},
 	  function(err, val) {
 		if (err)

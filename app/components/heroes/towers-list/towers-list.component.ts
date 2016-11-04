@@ -27,6 +27,8 @@ export class TowersComponent implements OnInit {
     this.newTower = {
       _id: 0,
       title: '',
+      name: '',
+      display_label: false,
       heroes: []
     }
     this.heroService.getTowers()

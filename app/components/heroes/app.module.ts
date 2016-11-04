@@ -12,6 +12,7 @@ import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { TowerDetailComponent }  from './tower-detail/tower-detail.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { HeroService }          from './shared/hero.service';
+import { SplitToTabPipe } from './shared/pipes/split-to-multi-tab.pipe';
 
 import './rxjs-extensions';
 
@@ -20,8 +21,6 @@ import './rxjs-extensions';
     BrowserModule,
     FormsModule,
     HttpModule,
-    //InMemoryWebApiModule.forRoot(InMemoryDataService),
-    //InMemoryWebApiModule.forRoot(InMemoryyDataService),
     AppRoutingModule
   ],
   declarations: [
@@ -30,7 +29,8 @@ import './rxjs-extensions';
     HeroDetailComponent,
     HeroesComponent,
     TowerDetailComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    SplitToTabPipe
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]

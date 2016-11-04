@@ -19,10 +19,13 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   newHero: Hero;
   
-  public powers = [
-    { value: 'speed', display: 'Speed' },
-    { value: 'strength', display: 'Strength' },
-    { value: 'flexibility', display: 'Flexibility' }
+  public type_field = [
+    { value: 'text', display: 'text' },
+    { value: 'select', display: 'select' },
+    { value: 'checkbox', display: 'checkbox' },
+    { value: 'radio', display: 'radio' },
+    { value: 'textarea', display: 'textarea' },
+    { value: 'button', display: 'button' }
   ];
   
   constructor(
@@ -41,13 +44,16 @@ export class HeroesComponent implements OnInit {
     });
     this.newHero = {
       //_id: null,
+      type_field: this.type_field[0].value,
       name: '',
-      power: this.powers[0].value,
-      isChampion: false
+      label: '',
+      help_text: '',
+      required: false,
+      placeholder: '',
+      options_list: ''
     }
-
-
   }
+
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
 
@@ -72,9 +78,6 @@ export class HeroesComponent implements OnInit {
     this.location.back();
   }
   
-  //onSelect(hero: Hero): void {
-  //  this.selectedHero = hero;
-  //}
 
   gotoDetail(hero: Hero): void {
     this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + hero._id]);

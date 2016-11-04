@@ -19,10 +19,13 @@ var HeroesComponent = (function () {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
-        this.powers = [
-            { value: 'speed', display: 'Speed' },
-            { value: 'strength', display: 'Strength' },
-            { value: 'flexibility', display: 'Flexibility' }
+        this.type_field = [
+            { value: 'text', display: 'text' },
+            { value: 'select', display: 'select' },
+            { value: 'checkbox', display: 'checkbox' },
+            { value: 'radio', display: 'radio' },
+            { value: 'textarea', display: 'textarea' },
+            { value: 'button', display: 'button' }
         ];
     }
     HeroesComponent.prototype.ngOnInit = function () {
@@ -34,9 +37,13 @@ var HeroesComponent = (function () {
         });
         this.newHero = {
             //_id: null,
+            type_field: this.type_field[0].value,
             name: '',
-            power: this.powers[0].value,
-            isChampion: false
+            label: '',
+            help_text: '',
+            required: false,
+            placeholder: '',
+            options_list: ''
         };
     };
     HeroesComponent.prototype.add = function (tower, h, isValid) {
@@ -62,9 +69,6 @@ var HeroesComponent = (function () {
     HeroesComponent.prototype.goBack = function () {
         this.location.back();
     };
-    //onSelect(hero: Hero): void {
-    //  this.selectedHero = hero;
-    //}
     HeroesComponent.prototype.gotoDetail = function (hero) {
         this.router.navigate(['/towers/' + this.tower._id + '/heroes/' + hero._id]);
     };

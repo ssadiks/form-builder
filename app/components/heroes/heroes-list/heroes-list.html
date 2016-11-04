@@ -1,39 +1,49 @@
 <div *ngIf="tower">
-<h1>Tower : {{tower.title}}</h1>
   <h2>Add Hero</h2>  
   <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate>
-    <div>
-      <label>Hero Name</label>
+    <p>
+        <label>Type</label>
+        <select name="type_field" [(ngModel)]="newHero.type_field">
+            <option *ngFor="let type_field of type_fields" [value]="type_field.value">  
+            {{type_field.display}}
+            </option>
+        </select>
+    </p>
+    <p>
+      <label>Name</label>
       <input type="text" name="name"  [(ngModel)]="newHero.name" #name="ngModel" required>
       <small [hidden]="name.valid || (name.pristine && !f.submitted)">
         Name is required
       </small>
-    </div>
-
-    <div>
-        <label>Hero Role</label>
-        <select name="power" [(ngModel)]="newHero.power">
-            <option *ngFor="let power of powers" [value]="power.value">  
-            {{power.display}}
-            </option>
-        </select>
-    </div>
-    
-    <div>
-      <label>
-          <input type="checkbox" name="isChampion"  [(ngModel)]="newHero.isChampion">
-          Is Champion
-      </label>
-    </div>
-
-      <button type="submit">Submit</button>
+    </p>
+    <p>
+      <label>Label</label>
+      <input type="text" name="name"  [(ngModel)]="newHero.name" #name="ngModel" required>
+    </p>
+    <p>
+      <label>Help text</label>
+      <input type="text" name="name"  [(ngModel)]="newHero.name" #name="ngModel" required>
+    </p>
+    <p>
+      <label>Placeholder</label>
+      <input type="text" name="name"  [(ngModel)]="newHero.name" #name="ngModel" required>
+    </p>   
+    <p>      
+      <input type="checkbox" name="required" [(ngModel)]="newHero.required" id="required">
+      <label for="required">Required</label>
+    </p>
+    <p><textarea></textarea></p>
+    <p><button type="submit">Submit</button></p>  
   </form>
 
-  <h2>List of Heroes</h2>
+  <h2>{{tower.title}}</h2>
   <ul class="c-heroes-list">     
     <li class="c-heroes-list__item" *ngFor="let hero of tower.heroes">
-      <div *ngIf="hero.power == 'speed'" class="o-grid o-grid--1@xs">
-        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Speed</span></div>
+      <!--input text-->
+      <div *ngIf="hero.type_field == 'text'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid">
+          <input type="{{hero.type_field}}" id="{{hero.name}}" name="{{hero.name}}" placeholder="{{hero.placeholder}}"/>
+        </div>
         <div class="o-grid__item">
           <div class="c-actions">
             <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
@@ -41,8 +51,13 @@
           </div>
         </div>
       </div>
-      <div *ngIf="hero.power == 'flexibility'" class="o-grid o-grid--1@xs">
-        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Flex</span></div>
+      <!--select-->
+      <div *ngIf="hero.type_field == 'select'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid">
+          <select id="{{hero.name}}" name="{{hero.name}}">
+            <option value="{{option[0]}}" *ngFor="let option of hero.options_list|splitToTab">{{option[1]}}</option>
+          </select>
+        </div>
         <div class="o-grid__item">
           <div class="c-actions">
             <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
@@ -50,8 +65,41 @@
           </div>
         </div>
       </div>
-      <div *ngIf="hero.power == 'strength'" class="o-grid o-grid--1@xs">
-        <div class="o-grid__item u-flex-item-fluid"><span>{{hero.name}} Strength</span></div>
+      <!--checkbox-->
+      <div *ngIf="hero.type_field == 'checkbox'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid">
+          <div *ngFor="let option of hero.options_list|splitToTab; let i=index">
+            <input type="{{hero.type_field}}" name="{{hero.name}}{{i+1}}" id="{{hero.name}}{{i+1}}" value="{{option[0]}}" class="checkbox-custom">
+            <label attr.for="{{hero.name}}{{i+1}}" class="checkbox-custom-label">{{option[1]}}</label>
+          </div>
+        </div>
+        <div class="o-grid__item">
+          <div class="c-actions">
+            <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+            <button (click)="gotoDetail(hero)">o</button>
+          </div>
+        </div>
+      </div>
+      <!--radio-->
+      <div *ngIf="hero.type_field == 'radio'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid">
+          <div *ngFor="let option of hero.options_list|splitToTab; let i=index">
+            <input type="{{hero.type_field}}" name="{{hero.name}}" id="{{hero.name}}{{i+1}}" value="{{option}}" class="radio-custom">
+            <label attr.for="{{hero.name}}{{i+1}}" class="checkbox-custom-label">{{option}}</label>
+          </div>
+        </div>
+        <div class="o-grid__item">
+          <div class="c-actions">
+            <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>
+            <button (click)="gotoDetail(hero)">o</button>
+          </div>
+        </div>
+      </div>
+      <!--button-->
+      <div *ngIf="hero.type_field == 'button'" class="o-grid o-grid--1@xs">
+        <div class="o-grid__item u-flex-item-fluid">
+          <button id="{{hero.name}}" name="{{hero.name}}" class="btn btn-primary">{{hero.label}}</button>
+        </div>
         <div class="o-grid__item">
           <div class="c-actions">
             <button class="delete" (click)="delete(tower, hero); $event.stopPropagation()">x</button>

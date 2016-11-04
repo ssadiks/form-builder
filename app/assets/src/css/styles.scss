@@ -38,16 +38,13 @@
     @media only screen and (max-width : $small-screen) {
         min-height: auto;
     }
-} 
-//.c-forms-list__item .c-actions {
-//    position: absolute;
-//    bottom: 0;
-//    right: 0;
-//    @media only screen and (max-width : $small-screen) {
-//        position: static;
-//    }
-//}
+}
 
+.c-heroes-list__item {
+  margin-bottom: 1rem;
+}
+
+ 
 .o-container input[type="text"], .o-container select, .o-container textarea {
     width: 100%;
 }  

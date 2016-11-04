@@ -22,6 +22,8 @@ var TowersComponent = (function () {
         this.newTower = {
             _id: 0,
             title: '',
+            name: '',
+            display_label: false,
             heroes: []
         };
         this.heroService.getTowers()

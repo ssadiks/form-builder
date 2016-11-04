@@ -1,21 +1,29 @@
-<h1>List of Towers</h1>
-
 <div class="c-adding">
   <h2>Add Tower</h2>
   <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate>
       <div>
+        <p>
           <input type="text" 
               name="title" [(ngModel)]="newTower.title" 
               #title="ngModel" required minlength="3" placeholder="Title">
           <small [hidden]="title.valid || (title.pristine && !f.submitted)">
-                Title is required (minimum 3 characters).
-            </small>
-          <button type="submit">Submit</button>
+            Title is required (minimum 3 characters).
+          </small>
+        </p>
+        <p>
+          <input type="text" 
+                        name="name" [(ngModel)]="newTower.name" 
+                        #name="ngModel" required minlength="3" placeholder="Name">
+          <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+            Name is required (minimum 3 characters).
+          </small>
+        </p>
+        <p><button type="submit">Submit</button></p>          
       </div>                    
   </form>
 </div>
 
-
+<h2>List of Towers</h2>
 <ul class="c-forms-list">
     <li class="c-forms-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
         <div class="o-grid o-grid--1@xs">
