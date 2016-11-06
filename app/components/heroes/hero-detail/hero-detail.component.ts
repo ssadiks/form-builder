@@ -18,10 +18,13 @@ export class HeroDetailComponent implements OnInit {
     hero: Hero;
     tower: Tower;
     
-    public powers = [
-      { value: 'speed', display: 'Speed' },
-      { value: 'strength', display: 'Strength' },
-      { value: 'flexibility', display: 'Flexibility' }
+    public type_fields = [
+      { value: 'text', display: 'text' },
+      { value: 'select', display: 'select' },
+      { value: 'checkbox', display: 'checkbox' },
+      { value: 'radio', display: 'radio' },
+      { value: 'textarea', display: 'textarea' },
+      { value: 'button', display: 'button' }
     ];
     
     constructor(

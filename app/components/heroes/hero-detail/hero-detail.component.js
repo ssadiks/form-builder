@@ -18,10 +18,13 @@ var HeroDetailComponent = (function () {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
-        this.powers = [
-            { value: 'speed', display: 'Speed' },
-            { value: 'strength', display: 'Strength' },
-            { value: 'flexibility', display: 'Flexibility' }
+        this.type_fields = [
+            { value: 'text', display: 'text' },
+            { value: 'select', display: 'select' },
+            { value: 'checkbox', display: 'checkbox' },
+            { value: 'radio', display: 'radio' },
+            { value: 'textarea', display: 'textarea' },
+            { value: 'button', display: 'button' }
         ];
     }
     HeroDetailComponent.prototype.ngOnInit = function () {

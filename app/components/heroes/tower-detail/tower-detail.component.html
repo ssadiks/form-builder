@@ -1,20 +1,26 @@
-<div *ngIf="tower">
+<div *ngIf="tower">
   <h2>{{tower.title}} details!</h2>
   <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
-    <div>
-        <label>Title</label>
-        <input type="text" 
-            name="title" [(ngModel)]="tower.title" 
-            #title="ngModel" required minlength="3">
-        <!--show error only when field is not valid & it's dirty or form submited-->
-        <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+      <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
+        <div class="o-grid__item">
+          <input type="text" 
+              name="title" [(ngModel)]="tower.title" 
+              #title="ngModel" required minlength="3" placeholder="Title">
+          <small [hidden]="title.valid || (title.pristine && !f.submitted)">
             Title is required (minimum 3 characters).
-        </small>
-    </div>
-    <button type="submit">Submit</button>
-  </form>
-  <span>Add Heroes</span>
-  <button (click)="goBack()">Back</button>
-  <!--<button (click)="save()">Save</button>-->
-
-</div>
+          </small>
+        </div>
+        <div class="o-grid__item">
+          <input type="text" 
+                        name="name" [(ngModel)]="tower.name" 
+                        #name="ngModel" required minlength="3" placeholder="Name">
+          <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+            Name is required (minimum 3 characters).
+          </small>
+        </div>
+        <div class="o-grid__item"><button type="submit">Submit</button></div>          
+      </div>                    
+  </form>
+  <p><button (click)="gotoHeroes(tower)">Manage Heroes</button></p>
+  <p><button (click)="goBack()">Back</button></p>
+</div>

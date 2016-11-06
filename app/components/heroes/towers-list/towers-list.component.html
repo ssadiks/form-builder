@@ -1,24 +1,26 @@
 <div class="c-adding">
   <h2>Add Tower</h2>
   <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate>
-      <div>
-        <p>
+      <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
+        <div class="o-grid__item">
+          <label for="title">Title*</label>
           <input type="text" 
-              name="title" [(ngModel)]="newTower.title" 
+              id="title" name="title" [(ngModel)]="newTower.title" 
               #title="ngModel" required minlength="3" placeholder="Title">
           <small [hidden]="title.valid || (title.pristine && !f.submitted)">
             Title is required (minimum 3 characters).
           </small>
-        </p>
-        <p>
+        </div>
+        <div class="o-grid__item">
+          <label for="name">Name*</label>
           <input type="text" 
-                        name="name" [(ngModel)]="newTower.name" 
+                        id="name" name="name" [(ngModel)]="newTower.name" 
                         #name="ngModel" required minlength="3" placeholder="Name">
           <small [hidden]="name.valid || (name.pristine && !f.submitted)">
             Name is required (minimum 3 characters).
           </small>
-        </p>
-        <p><button type="submit">Submit</button></p>          
+        </div>
+        <div class="o-grid__item"><button type="submit">Submit</button></div>          
       </div>                    
   </form>
 </div>

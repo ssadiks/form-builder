@@ -19,7 +19,7 @@ var HeroesComponent = (function () {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
-        this.type_field = [
+        this.type_fields = [
             { value: 'text', display: 'text' },
             { value: 'select', display: 'select' },
             { value: 'checkbox', display: 'checkbox' },
@@ -36,8 +36,8 @@ var HeroesComponent = (function () {
                 .then(function (tower) { return _this.tower = tower; });
         });
         this.newHero = {
-            //_id: null,
-            type_field: this.type_field[0].value,
+            //_id: 1,
+            type_field: this.type_fields[0].value,
             name: '',
             label: '',
             help_text: '',
@@ -48,6 +48,7 @@ var HeroesComponent = (function () {
     };
     HeroesComponent.prototype.add = function (tower, h, isValid) {
         var _this = this;
+        console.log(h);
         if (isValid)
             this.heroService.createHero(tower, this.newHero)
                 .then(function (hero) {

@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // Keep the Input import for now, we'll remove it later:
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var router_2 = require('@angular/router');
 var common_1 = require('@angular/common');
 var hero_service_1 = require('../shared/hero.service');
 var TowerDetailComponent = (function () {
-    function TowerDetailComponent(heroService, route, location) {
+    function TowerDetailComponent(router, heroService, route, location) {
+        this.router = router;
         this.heroService = heroService;
         this.route = route;
         this.location = location;
@@ -36,6 +38,9 @@ var TowerDetailComponent = (function () {
             this.heroService.updateTower(this.tower)
                 .then(function () { return _this.goBack(); });
     };
+    TowerDetailComponent.prototype.gotoHeroes = function (tower) {
+        this.router.navigate(['/towers/' + this.tower._id + '/heroes/']);
+    };
     TowerDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -43,7 +48,7 @@ var TowerDetailComponent = (function () {
             templateUrl: 'tower-detail.component.html',
             styleUrls: ['tower-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [router_2.Router, hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location])
     ], TowerDetailComponent);
     return TowerDetailComponent;
 }());

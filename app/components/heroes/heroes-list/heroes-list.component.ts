@@ -19,7 +19,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   newHero: Hero;
   
-  public type_field = [
+  public type_fields = [
     { value: 'text', display: 'text' },
     { value: 'select', display: 'select' },
     { value: 'checkbox', display: 'checkbox' },
@@ -43,8 +43,8 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      //_id: null,
-      type_field: this.type_field[0].value,
+      //_id: 1,
+      type_field: this.type_fields[0].value,
       name: '',
       label: '',
       help_text: '',
@@ -56,7 +56,7 @@ export class HeroesComponent implements OnInit {
 
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
-
+  console.log(h);
     if(isValid)
       this.heroService.createHero(tower, this.newHero)
         .then(hero => {

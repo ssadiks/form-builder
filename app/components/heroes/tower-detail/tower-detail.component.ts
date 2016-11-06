@@ -1,6 +1,7 @@
 // Keep the Input import for now, we'll remove it later:
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
+import { Router } from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import { Tower } from '../shared/hero';
@@ -18,6 +19,7 @@ export class TowerDetailComponent implements OnInit {
     tower: Tower;
     
     constructor(
+      private router: Router,
       private heroService: HeroService,
       private route: ActivatedRoute,
       private location: Location
@@ -38,6 +40,8 @@ export class TowerDetailComponent implements OnInit {
         this.heroService.updateTower(this.tower)
           .then(() => this.goBack());
     }
-
+    gotoHeroes(tower: Tower): void {
+      this.router.navigate(['/towers/' + this.tower._id + '/heroes/']);
+    }
 
 }

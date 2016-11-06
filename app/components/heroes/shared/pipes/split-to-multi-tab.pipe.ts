@@ -7,7 +7,7 @@ export class SplitToTabPipe implements PipeTransform {
   transform(value: string, args: string[]): any {
     if (!value) return value;
     
-    var arr = [];    
+    let arr: Array<any> = [];    
     arr = value.split(';');
     for (var i = 0; i < arr.length; i++){
       arr[i] = arr[i].split('|');

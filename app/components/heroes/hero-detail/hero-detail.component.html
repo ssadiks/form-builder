@@ -1,34 +1,50 @@
 <div *ngIf="hero">
-  <h2>{{hero.name}} details!</h2>
-
-  <form #f="ngForm" (ngSubmit)="save(tower, f.value, f.valid)" novalidate>
-    <div>
-      <label>Hero Name</label>
-      <input type="text" name="name"  [(ngModel)]="hero.name" #name="ngModel" required>
-      <small [hidden]="name.valid || (name.pristine && !f.submitted)">
-        Name is required
-      </small>
-    </div>
-
-    <div>
-        <label>Hero Role {{ hero.power }}</label>
-        <select name="power" [(ngModel)]="hero.power">
-            <option *ngFor="let power of powers" [value]="power.value">  
-            {{power.display}}
-            </option>
-        </select>
-    </div>
-    
-    <div>
-      <label>
-          <input type="checkbox" name="isChampion" [(ngModel)]="hero.isChampion" #isChampion="ngModel">
-          Is Champion
-      </label>
-    </div>
-
-    <button type="submit">Submit</button>
-  </form>
-  <p><button (click)="goBack()">Back</button></p>
   
-
-</div>
+  <!--Add Field-->
+  <div class="c-adding">
+    <h2>Add Hero</h2>  
+    <form #f="ngForm" (ngSubmit)="save(tower, f.value, f.valid)" novalidate>
+      <div class="c-adding o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
+      <div class="o-grid__item">
+          <label for="type_field">Type*</label>
+          <select id="type_field" name="type_field" [(ngModel)]="hero.type_field">
+              <option *ngFor="let type_field of type_fields" [value]="type_field.value">  
+              {{type_field.display}}
+              </option>
+          </select>
+      </div>
+      <div class="o-grid__item">
+        <label for="name">Name*</label>
+        <input type="text" id="name" name="name"  [(ngModel)]="hero.name" #name="ngModel" placeholder="name" value="{{hero.name}}" required>
+        <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+          Name is required
+        </small>
+      </div>
+      <div class="o-grid__item">
+        <label for="label">Label</label>
+        <input type="text" id="label" name="label"  [(ngModel)]="hero.label" #label="ngModel" placeholder="label" value="hero.label">
+      </div>
+      <div class="o-grid__item">
+        <label for="help_text">Help text</label>
+        <input type="text" id="help_text" name="help_text"  [(ngModel)]="hero.help_text" #help_text="ngModel" placeholder="Text for help">
+      </div>
+      <div class="o-grid__item">
+        <label for="placeholder">Placeholder</label>
+        <input type="text" id="placeholder" name="placeholder"  [(ngModel)]="hero.placeholder" #placeholder="ngModel" placeholder="placeholder">
+      </div>
+      <div class="o-grid__item">
+        <label for="options_list">Options List</label>
+        <textarea id="options_list" name="options_list" [(ngModel)]="hero.options_list" #options_list="ngModel" placeholder="a|b;c|d;e|f"></textarea>
+      </div>
+      <div class="o-grid__item">   
+        <input type="checkbox" id="required" name="required" [(ngModel)]="hero.required">
+        <label for="required">Required</label>
+      </div>      
+      <div class="o-grid__item"><button type="submit">Submit</button></div>
+      </div>
+    </form>
+  </div>
+  <p><button (click)="goBack()">Back</button></p>
+  
+
+</div>
