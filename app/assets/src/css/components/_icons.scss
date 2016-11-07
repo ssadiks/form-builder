@@ -29,12 +29,33 @@
 
 // icons library
 
-.c-icon--facebook::before, .c-icon-after--facebook::after {
+.c-icon--arrow-down::before, .c-icon-after--arrow-down::after {
     content: "\ea01";
 }
-.c-icon--google::before, .c-icon-after--google::after {
+.c-icon--arrow-left::before, .c-icon-after--arrow-left::after {
     content: "\ea02";
 }
-.c-icon--twitter::before, .c-icon-after--twitter::after {
+.c-icon--arrow-right::before, .c-icon-after--arrow-right::after {
     content: "\ea03";
 }
+.c-icon--arrow-up::before, .c-icon-after--arrow-up::after {
+    content: "\ea04";
+}
+.c-icon--checkmark::before, .c-icon-after--checkmark::after {
+    content: "\ea05";
+}
+.c-icon--facebook::before, .c-icon-after--facebook::after {
+    content: "\ea06";
+}
+.c-icon--google::before, .c-icon-after--google::after {
+    content: "\ea07";
+}
+.c-icon--pencil::before, .c-icon-after--pencil::after {
+    content: "\ea08";
+}
+.c-icon--trash::before, .c-icon-after--trash::after {
+    content: "\ea09";
+}
+.c-icon--twitter::before, .c-icon-after--twitter::after {
+    content: "\ea0a";
+}

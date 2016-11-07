@@ -2,7 +2,7 @@
   <h2>Add Form</h2>
   <div class="cta-manage-form"><button [class.close]="stateButton == 'inactive'" (click)="togglestates()">Add Form</button></div>
   <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate [@towersState]="state">
-      <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
+      <div class="o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
         <div class="o-grid__item">
           <label for="title">Title*</label>
           <input type="text" 
@@ -21,7 +21,7 @@
             Name is required (minimum 3 characters).
           </small>
         </div>
-        <div class="o-grid__item"><button type="submit">Submit</button></div>          
+        <div class="o-grid__item"><button class="c-icon-after c-icon-after--checkmark" type="submit">Submit</button></div>          
       </div>                    
   </form>
   
@@ -34,8 +34,8 @@
             <div class="o-grid__item u-flex-item-fluid"><span>{{tower.title}}</span></div>
             <div class="o-grid__item">
               <div class="c-actions">
-                  <button class="delete" (click)="delete(tower); $event.stopPropagation()">x</button>
-                  <button class="edit" (click)="gotoDetail(tower); $event.stopPropagation()">o</button>
+                  <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
+                  <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
               </div>
             </div>              
         </div>
