@@ -6,11 +6,34 @@ import { Router } from '@angular/router';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location } from '@angular/common';
 
+import {
+  Input,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/core';
+
 @Component({
     moduleId: module.id,
     selector: 'heroes-list',
     templateUrl: 'heroes-list.html',
-    styleUrls : ['heroes-list.css']
+    styleUrls : ['heroes-list.css'],
+    animations: [
+      trigger('heroesState', [
+        state('inactive', style({
+          height: '0',
+          display: 'none'
+        })),
+        state('active',   style({
+          height: '*',
+          display: 'block'
+        })),
+        transition('inactive => active', animate('100ms ease-in')),
+        transition('active => inactive', animate('100ms ease-out'))
+      ])
+    ]
 })
 
 export class HeroesComponent implements OnInit {
@@ -54,6 +77,13 @@ export class HeroesComponent implements OnInit {
     }
   }
 
+  state: string = 'inactive';
+  stateButton: string = 'inactive';
+  togglestates() {
+    console.log('toto');
+    this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+    this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
+  }
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
   console.log(h);

@@ -4,11 +4,34 @@ import { Hero, Tower } from '../shared/hero';
 import { HeroService } from '../shared/hero.service';
 import { Router } from '@angular/router';
 
+import {
+  Input,
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/core';
+
 @Component({
   moduleId: module.id,
   selector: 'towers-list',
   templateUrl: 'towers-list.component.html',
-  styleUrls: [ 'towers-list.component.css' ]
+  styleUrls: [ 'towers-list.component.css' ],
+  animations: [
+    trigger('towersState', [
+      state('inactive', style({
+        height: '0',
+        display: 'none'
+      })),
+      state('active',   style({
+        height: '*',
+        display: 'block'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 
 export class TowersComponent implements OnInit {
@@ -33,6 +56,13 @@ export class TowersComponent implements OnInit {
     }
     this.heroService.getTowers()
       .then(towers => this.towers = towers);
+  }
+  
+  state: string = 'inactive';
+  stateButton: string = 'inactive';
+  togglestates() {
+    this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+    this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
   }
 
   add(t: Tower, isValid: boolean): void {

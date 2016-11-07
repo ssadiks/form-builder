@@ -13,6 +13,7 @@ var hero_service_1 = require('../shared/hero.service');
 var router_1 = require('@angular/router');
 var router_2 = require('@angular/router');
 var common_1 = require('@angular/common');
+var core_2 = require('@angular/core');
 var HeroesComponent = (function () {
     function HeroesComponent(router, heroService, route, location) {
         this.router = router;
@@ -27,6 +28,8 @@ var HeroesComponent = (function () {
             { value: 'textarea', display: 'textarea' },
             { value: 'button', display: 'button' }
         ];
+        this.state = 'inactive';
+        this.stateButton = 'inactive';
     }
     HeroesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -45,6 +48,11 @@ var HeroesComponent = (function () {
             placeholder: '',
             options_list: ''
         };
+    };
+    HeroesComponent.prototype.togglestates = function () {
+        console.log('toto');
+        this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+        this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
     };
     HeroesComponent.prototype.add = function (tower, h, isValid) {
         var _this = this;
@@ -78,7 +86,21 @@ var HeroesComponent = (function () {
             moduleId: module.id,
             selector: 'heroes-list',
             templateUrl: 'heroes-list.html',
-            styleUrls: ['heroes-list.css']
+            styleUrls: ['heroes-list.css'],
+            animations: [
+                core_2.trigger('heroesState', [
+                    core_2.state('inactive', core_2.style({
+                        height: '0',
+                        display: 'none'
+                    })),
+                    core_2.state('active', core_2.style({
+                        height: '*',
+                        display: 'block'
+                    })),
+                    core_2.transition('inactive => active', core_2.animate('100ms ease-in')),
+                    core_2.transition('active => inactive', core_2.animate('100ms ease-out'))
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService, router_2.ActivatedRoute, common_1.Location])
     ], HeroesComponent);

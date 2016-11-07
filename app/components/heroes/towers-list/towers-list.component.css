@@ -59,3 +59,11 @@ h4 {
     }
 }
 */
+
+.cta-manage-form button {
+  background-color: orange;
+}
+
+.cta-manage-form button.close {
+  background-color: red;
+}

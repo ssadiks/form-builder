@@ -11,11 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var hero_service_1 = require('../shared/hero.service');
 var router_1 = require('@angular/router');
+var core_2 = require('@angular/core');
 var TowersComponent = (function () {
     function TowersComponent(router, heroService) {
         this.router = router;
         this.heroService = heroService;
         this.towers = [];
+        this.state = 'inactive';
+        this.stateButton = 'inactive';
     }
     TowersComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,6 +31,10 @@ var TowersComponent = (function () {
         };
         this.heroService.getTowers()
             .then(function (towers) { return _this.towers = towers; });
+    };
+    TowersComponent.prototype.togglestates = function () {
+        this.state = (this.state === 'inactive' ? 'active' : 'inactive');
+        this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
     };
     TowersComponent.prototype.add = function (t, isValid) {
         var _this = this;
@@ -62,7 +69,21 @@ var TowersComponent = (function () {
             moduleId: module.id,
             selector: 'towers-list',
             templateUrl: 'towers-list.component.html',
-            styleUrls: ['towers-list.component.css']
+            styleUrls: ['towers-list.component.css'],
+            animations: [
+                core_2.trigger('towersState', [
+                    core_2.state('inactive', core_2.style({
+                        height: '0',
+                        display: 'none'
+                    })),
+                    core_2.state('active', core_2.style({
+                        height: '*',
+                        display: 'block'
+                    })),
+                    core_2.transition('inactive => active', core_2.animate('100ms ease-in')),
+                    core_2.transition('active => inactive', core_2.animate('100ms ease-out'))
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
     ], TowersComponent);

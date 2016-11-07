@@ -1,6 +1,7 @@
 <div class="c-adding">
-  <h2>Add Tower</h2>
-  <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate>
+  <h2>Add Form</h2>
+  <div class="cta-manage-form"><button [class.close]="stateButton == 'inactive'" (click)="togglestates()">Add Form</button></div>
+  <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate [@towersState]="state">
       <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
         <div class="o-grid__item">
           <label for="title">Title*</label>
@@ -23,9 +24,10 @@
         <div class="o-grid__item"><button type="submit">Submit</button></div>          
       </div>                    
   </form>
+  
 </div>
 
-<h2>List of Towers</h2>
+<h2>List of {{ towers.length }} Form(s)</h2>
 <ul class="c-forms-list">
     <li class="c-forms-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
         <div class="o-grid o-grid--1@xs">

@@ -2,8 +2,9 @@
   
   <!--Add Field-->
   <div class="c-adding">
-    <h2>Add Hero</h2>  
-    <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate>
+    <h2>Add Hero</h2>
+    <div><button [class.close]="stateButton == 'inactive'" (click)="togglestates()">Ouvrir</button></div>
+    <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate [@heroesState]="state">
       <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
       <div class="o-grid__item">
           <label for="type_field">Type*</label>
@@ -46,7 +47,7 @@
   </div>
 
   <!--Form Built-->
-  <h2>{{tower.title}}</h2>
+  <h2>{{tower.title}} - {{tower.heroes.length}} element(s)</h2>
   <form id="{{ tower.name }}" name="{{ tower.name }}">
     <ul class="c-heroes-list">     
       <li class="c-heroes-list__item" *ngFor="let hero of tower.heroes">

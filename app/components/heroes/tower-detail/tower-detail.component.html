@@ -1,8 +1,9 @@
 <div *ngIf="tower">
-  <h2>{{tower.title}} details!</h2>
+  <h2>{{tower.title}}</h2>
   <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
       <div class="o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
         <div class="o-grid__item">
+          <label>Title</label>
           <input type="text" 
               name="title" [(ngModel)]="tower.title" 
               #title="ngModel" required minlength="3" placeholder="Title">
@@ -11,6 +12,7 @@
           </small>
         </div>
         <div class="o-grid__item">
+          <label>Name</label>
           <input type="text" 
                         name="name" [(ngModel)]="tower.name" 
                         #name="ngModel" required minlength="3" placeholder="Name">
