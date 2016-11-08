@@ -2,9 +2,9 @@
   
   <!--Add Field-->
   <div class="c-adding">
-    <h2>Update Hero</h2>  
+    <h2 class="c-adding__title">Update Field</h2>  
     <form #f="ngForm" (ngSubmit)="save(tower, f.value, f.valid)" novalidate>
-      <div class="c-adding o-grid o-grid--4 o-grid--3@lg o-grid--2@md o-grid--1@sm">
+      <div class="c-adding o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
       <div class="o-grid__item">
           <label for="type_field">Type*</label>
           <select id="type_field" name="type_field" [(ngModel)]="hero.type_field">
@@ -34,7 +34,7 @@
       </div>
       <div class="o-grid__item">
         <label for="options_list">Options List</label>
-        <textarea id="options_list" name="options_list" [(ngModel)]="hero.options_list" #options_list="ngModel" placeholder="a|b;c|d;e|f"></textarea>
+        <textarea id="options_list" name="options_list" [(ngModel)]="hero.options_list" #options_list="ngModel" placeholder="value1|display1;value2|display2"></textarea>
       </div>
       <div class="o-grid__item">   
         <input type="checkbox" id="required" name="required" [(ngModel)]="hero.required">

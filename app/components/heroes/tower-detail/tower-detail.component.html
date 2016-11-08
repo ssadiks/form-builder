@@ -1,28 +1,32 @@
-<div *ngIf="tower">
-  <h2>{{tower.title}}</h2>
-  <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
-      <div class="o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
-        <div class="o-grid__item">
-          <label>Title</label>
-          <input type="text" 
-              name="title" [(ngModel)]="tower.title" 
-              #title="ngModel" required minlength="3" placeholder="Title">
-          <small [hidden]="title.valid || (title.pristine && !f.submitted)">
-            Title is required (minimum 3 characters).
-          </small>
-        </div>
-        <div class="o-grid__item">
-          <label>Name</label>
-          <input type="text" 
-                        name="name" [(ngModel)]="tower.name" 
-                        #name="ngModel" required minlength="3" placeholder="Name">
-          <small [hidden]="name.valid || (name.pristine && !f.submitted)">
-            Name is required (minimum 3 characters).
-          </small>
-        </div>
-        <div class="o-grid__item"><button class="c-icon-after c-icon-after--checkmark" type="submit">Submit</button></div>          
-      </div>                    
-  </form>
-  <p><button class="c-icon-after c-icon-after--arrow-right" (click)="gotoHeroes(tower)">Manage Heroes</button></p>
-  <p><button class="c-icon c-icon--arrow-left" (click)="goBack()">Back</button></p>
+<div *ngIf="tower">  <div class="c-adding">
+    <h2 class="c-adding__title">{{tower.title}}</h2>
+    <form #f="ngForm" (ngSubmit)="save(f.value, f.valid)" novalidate>
+        <div class="o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
+          <div class="o-grid__item">
+            <label>Title</label>
+            <input type="text" 
+                name="title" [(ngModel)]="tower.title" 
+                #title="ngModel" required minlength="3" placeholder="Title">
+            <small [hidden]="title.valid || (title.pristine && !f.submitted)">
+              Title is required (minimum 3 characters).
+            </small>
+          </div>
+          <div class="o-grid__item">
+            <label>Name</label>
+            <input type="text" 
+                          name="name" [(ngModel)]="tower.name" 
+                          #name="ngModel" required minlength="3" placeholder="Name">
+            <small [hidden]="name.valid || (name.pristine && !f.submitted)">
+              Name is required (minimum 3 characters).
+            </small>
+          </div>
+          <div class="o-grid__item"><button class="c-icon-after c-icon-after--checkmark" type="submit">Submit</button></div>          
+        </div>                    
+    </form>
+  </div>
+  
+  <p>
+    <button class="c-icon c-icon--arrow-left" (click)="goBack()">Back</button>
+    <button class="c-icon-after c-icon-after--arrow-right" (click)="gotoHeroes(tower)">Manage Heroes</button>
+  </p>
 </div>

@@ -1,7 +1,9 @@
 <div class="c-adding">
-  <h2>Add Form</h2>
-  <div class="cta-manage-form"><button [class.close]="stateButton == 'inactive'" (click)="togglestates()">Add Form</button></div>
-  <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate [@towersState]="state">
+  <!--<h2>Add Form</h2>-->
+  <div class="cta-manage-form" [class.close]="stateButton == 'inactive'">
+    <button (click)="togglestates()">Add Form</button>
+  </div>
+  <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate [@towersState]="state" class="c-adding__form">
       <div class="o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
         <div class="o-grid__item">
           <label for="title">Title*</label>
@@ -23,24 +25,25 @@
         </div>
         <div class="o-grid__item"><button class="c-icon-after c-icon-after--checkmark" type="submit">Submit</button></div>          
       </div>                    
-  </form>
-  
+  </form>  
 </div>
 
-<h2>List of {{ towers.length }} Form(s)</h2>
-<ul class="c-forms-list">
-    <li class="c-forms-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
-        <div class="o-grid o-grid--1@xs">
-            <div class="o-grid__item u-flex-item-fluid"><span>{{tower.title}}</span></div>
-            <div class="o-grid__item">
-              <div class="c-actions">
-                  <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
-                  <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
-              </div>
-            </div>              
-        </div>
-    </li>
-</ul>
+<div class="c-block-list">
+  <h2 class="c-block-list__title">List of {{ towers.length }} Form(s)</h2>
+  <ul class="c-forms-list">
+      <li class="c-forms-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
+          <div class="o-grid o-grid--1@xs">
+              <div class="o-grid__item u-flex-item-fluid"><span class="c-forms-list__item__title">{{tower.title}}</span></div>
+              <div class="o-grid__item">
+                <div class="c-actions">
+                    <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
+                    <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
+                </div>
+              </div>              
+          </div>
+      </li>
+  </ul>
+</div>
 
 
 <hero-search></hero-search>

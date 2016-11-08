@@ -1,0 +1,43 @@
+.c-adding {
+    margin-bottom: 2.4rem;
+}
+
+.c-adding .cta-manage-form {
+    position: relative;
+}
+
+.c-adding .cta-manage-form button {
+    width: 100%;
+}
+
+.c-adding .cta-manage-form button::after {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    width: 0;
+    height: 0;
+    content: '';
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border-top: .7rem solid #000;
+    border-right: .7rem solid transparent;
+    border-left: .7rem solid transparent;
+}
+
+.c-adding .cta-manage-form.close button::after {
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: .7rem solid transparent;
+    border-bottom: .7rem solid transparent;
+    border-left: .7rem solid #000;
+}
+
+.c-adding__form {
+    padding: 0 2.4rem 2.4rem;
+    border: 1px solid;
+}
+
+.c-adding__title {
+    margin-bottom: 1.2rem;
+}

@@ -2,9 +2,10 @@
   
   <!--Add Field-->
   <div class="c-adding">
-    <h2>Add Hero</h2>
-    <div><button [class.close]="stateButton == 'inactive'" (click)="togglestates()">Ouvrir</button></div>
-    <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate [@heroesState]="state">
+    <div class="cta-manage-form" [class.close]="stateButton == 'inactive'">
+      <button (click)="togglestates()">Add Field</button>
+    </div>
+    <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate [@heroesState]="state" class="c-adding__form">
       <div class="o-grid o-grid--4 u-flex-cross-end o-grid--3@lg o-grid--2@md o-grid--1@sm">
       <div class="o-grid__item">
           <label for="type_field">Type*</label>
@@ -35,7 +36,7 @@
       </div>
       <div class="o-grid__item">
         <label for="options_list">Options List</label>
-        <textarea id="options_list" name="options_list" [(ngModel)]="newHero.options_list" #options_list="ngModel" placeholder="a|b;c|d;e|f"></textarea>
+        <textarea id="options_list" name="options_list" [(ngModel)]="newHero.options_list" #options_list="ngModel" placeholder="value1|display1;value2|display2"></textarea>
       </div>
       <div class="o-grid__item">   
         <input type="checkbox" id="required" name="required" [(ngModel)]="newHero.required">
@@ -47,7 +48,8 @@
   </div>
 
   <!--Form Built-->
-  <h2>{{tower.title}} - {{tower.heroes.length}} element(s)</h2>
+  <div class="c-block-list">
+  <h2 class="c-block-list__title">{{tower.title}} - {{tower.heroes.length}} element(s)</h2>
   <form id="{{ tower.name }}" name="{{ tower.name }}">
     <ul class="c-heroes-list">     
       <li class="c-heroes-list__item" *ngFor="let hero of tower.heroes">
@@ -124,4 +126,6 @@
     </ul>
   </form>
   <button class="c-icon c-icon--arrow-left" (click)="goBack()">Back</button>
+  </div>  
+  
 </div> 

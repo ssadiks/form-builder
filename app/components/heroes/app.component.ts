@@ -4,14 +4,14 @@ import { Component } from '@angular/core';
   styleUrls : ['app/components/heroes/app.component.css'],
   template: `
     <h1>{{title}}</h1>
-    <nav>
-      <a routerLink="/towers" routerLinkActive="active">List of Towers</a>
-      <a routerLink="/heroes" routerLinkActive="active">Search Tower</a>
+    <nav class="c-nav">
+      <a routerLink="/towers" routerLinkActive="active">List of Forms</a>
+      <a routerLink="/heroes" routerLinkActive="active">Search Form</a>
     </nav>
     <router-outlet></router-outlet>
   `
 
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Form Builder Ng2';
 }
