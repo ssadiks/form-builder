@@ -49,12 +49,15 @@
 
   <!--Form Built-->
   <div class="c-block-list">
-  <h2 class="c-block-list__title">{{tower.title}} - {{tower.heroes.length}} element(s)</h2>
+  <div class="c-block-list__header o-grid">
+    <h2 class="c-block-list__title o-grid__item">{{ tower.title }}</h2>
+    <span class="c-block-list__count o-grid__item u-flex-item-fluid">{{ tower.heroes.length }} item(s)</span>
+  </div>
   <form id="{{ tower.name }}" name="{{ tower.name }}">
-    <ul class="c-heroes-list">     
-      <li class="c-heroes-list__item" *ngFor="let hero of tower.heroes">
+    <ul class="c-block-list__fields">     
+      <li class="c-block-list__item" *ngFor="let hero of tower.heroes">
         <!--input text-->
-        <div *ngIf="hero.type_field == 'text'" class="o-grid o-grid--1@xs">
+        <div *ngIf="hero.type_field == 'text'" class="o-grid o-grid--1@sm">
           <div class="o-grid__item u-flex-item-fluid">
             <input type="{{hero.type_field}}" id="{{hero.name}}" name="{{hero.name}}" placeholder="{{hero.placeholder}}" [attr.required]="hero.required === true ? '' : null"/>
           </div>
@@ -66,7 +69,7 @@
           </div>
         </div>
         <!--select-->
-        <div *ngIf="hero.type_field == 'select'" class="o-grid o-grid--1@xs">
+        <div *ngIf="hero.type_field == 'select'" class="o-grid o-grid--1@sm">
           <div class="o-grid__item u-flex-item-fluid">
             <select id="{{hero.name}}" name="{{hero.name}}">
               <option value="{{option[0]}}" *ngFor="let option of hero.options_list|splitToTab">{{option[1]}}</option>
@@ -80,7 +83,7 @@
           </div>
         </div>
         <!--checkbox-->
-        <div *ngIf="hero.type_field == 'checkbox'" class="o-grid o-grid--1@xs">
+        <div *ngIf="hero.type_field == 'checkbox'" class="o-grid o-grid--1@sm">
           <div class="o-grid__item u-flex-item-fluid">
             <span *ngFor="let option of hero.options_list|splitToTab; let i=index">
               <input type="{{hero.type_field}}" name="{{hero.name}}{{i+1}}" id="{{hero.name}}{{i+1}}" value="{{option[0]}}" class="checkbox-custom">
@@ -95,7 +98,7 @@
           </div>
         </div>
         <!--radio-->
-        <div *ngIf="hero.type_field == 'radio'" class="o-grid o-grid--1@xs">
+        <div *ngIf="hero.type_field == 'radio'" class="o-grid o-grid--1@sm">
           <div class="o-grid__item u-flex-item-fluid">
             <span *ngFor="let option of hero.options_list|splitToTab; let i=index">
               <input type="{{hero.type_field}}" name="{{hero.name}}" id="{{hero.name}}{{i+1}}" value="{{option}}" [attr.checked]="i === 0 ? '' : null" class="radio-custom">
@@ -110,7 +113,7 @@
           </div>
         </div>
         <!--button-->
-        <div *ngIf="hero.type_field == 'button'" class="o-grid o-grid--1@xs">
+        <div *ngIf="hero.type_field == 'button'" class="o-grid o-grid--1@sm">
           <div class="o-grid__item u-flex-item-fluid">
             <button id="{{hero.name}}" name="{{hero.name}}" class="btn btn-primary">{{hero.label}}</button>
           </div>
@@ -125,7 +128,10 @@
       </li>
     </ul>
   </form>
-  <button class="c-icon c-icon--arrow-left" (click)="goBack()">Back</button>
+  <div class="c-nav-footer">
+    <button class="c-icon c-icon--arrow-left" (click)="goBack()">Back</button>
+  </div>
+  
   </div>  
   
 </div> 

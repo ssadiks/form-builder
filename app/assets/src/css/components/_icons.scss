@@ -53,9 +53,15 @@
 .c-icon--pencil::before, .c-icon-after--pencil::after {
     content: "\ea08";
 }
-.c-icon--trash::before, .c-icon-after--trash::after {
+.c-icon--search::before, .c-icon-after--search::after {
     content: "\ea09";
 }
-.c-icon--twitter::before, .c-icon-after--twitter::after {
+.c-icon--trash::before, .c-icon-after--trash::after {
     content: "\ea0a";
+}
+.c-icon--twitter::before, .c-icon-after--twitter::after {
+    content: "\ea0b";
+}
+.c-icon--view::before, .c-icon-after--view::after {
+    content: "\ea0c";
 }

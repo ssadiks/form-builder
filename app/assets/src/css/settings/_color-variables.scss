@@ -6,6 +6,8 @@ $_black                 : #000 !default;
 $_white                 : #fff !default;
 $_silver                : #ccc !default;
 $_mine-shaft            : #333 !default;
+$_red                   : #e52032;
+$_navy                : #042844;
 
 // color variables font
 $color-text             : $_black !default;
@@ -14,10 +16,6 @@ $color-link-hover       : $_black !default;
 
 // color variables interface
 $color-background       : $_white !default;
-$color-background-btn   : $_silver !default;
+$color-background-btn   : $_navy !default;
 $color-border-field     : $_silver !default;
 $color-separator        : $_silver !default;
-
-
-$marine: #042844;
-$red: #e52032;

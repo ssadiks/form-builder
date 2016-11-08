@@ -29,13 +29,18 @@
 </div>
 
 <div class="c-block-list">
-  <h2 class="c-block-list__title">List of {{ towers.length }} Form(s)</h2>
-  <ul class="c-forms-list">
-      <li class="c-forms-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
-          <div class="o-grid o-grid--1@xs">
-              <div class="o-grid__item u-flex-item-fluid"><span class="c-forms-list__item__title">{{tower.title}}</span></div>
+  <div class="c-block-list__header o-grid">
+    <h2 class="c-block-list__title o-grid__item">My Forms</h2>
+    <span class="c-block-list__count o-grid__item u-flex-item-fluid">{{ towers.length }} item(s)</span>
+  </div>
+  
+  <ul class="c-block-list__forms">
+      <li class="c-block-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
+          <div class="o-grid o-grid--1@sm">
+              <div class="o-grid__item u-flex-item-fluid"><span class="c-block-list__forms__item__title">{{tower.title}}</span></div>
               <div class="o-grid__item">
                 <div class="c-actions">
+                    <button class="c-actions__view c-icon c-icon--view" (click)="gotoTower(tower); $event.stopPropagation()"></button>
                     <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
                     <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
                 </div>

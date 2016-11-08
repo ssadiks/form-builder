@@ -1,3 +1,22 @@
 .c-nav {
-  margin-bottom: 2.4rem;
-}  
+  margin-bottom: $medium-value;
+}
+
+nav a {
+  padding: $extra-small-value $small-value;
+  text-decoration: none;
+  display: inline-block;
+  background-color: $_red;
+  border-radius: 4px;
+  color: $_white;
+}
+nav a:visited, a:link {
+  color: $_white;
+}
+nav a:hover {
+  color: $color-text;
+  background-color: #b91221;
+}
+nav a.active {
+  color: #fff;
+} 

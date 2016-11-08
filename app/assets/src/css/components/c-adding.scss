@@ -1,6 +1,6 @@
 .c-adding {
   //border: 1px solid red;
-  margin-bottom: 2.4rem;
+  margin-bottom: $medium-value;
   .cta-manage-form {
     position: relative
   }
@@ -13,7 +13,7 @@
     height: 0; 
     border-left: 0.7rem solid transparent;
     border-right: 0.7rem solid transparent;  
-    border-top: 0.7rem solid #000;    
+    border-top: 0.7rem solid $_white;    
     position: absolute;
     right: 1rem;
     top: 50%;
@@ -25,16 +25,15 @@
     height: 0; 
     border-top: 0.7rem solid transparent;
     border-bottom: 0.7rem solid transparent;  
-    border-left: 0.7rem solid #000;    
+    border-left: 0.7rem solid $_white;    
   }
   
   &__form {
     border: 1px solid;
-    padding: 0 2.4rem 2.4rem;
-    //padding: 0 $small-value $small-value;
+    padding: 0 $medium-value $medium-value;
   }
   &__title {
-    margin-bottom: 1.2rem;
+    margin-bottom: $small-value;
   }
 
 }

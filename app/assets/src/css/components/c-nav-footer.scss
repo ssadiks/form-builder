@@ -1,0 +1,12 @@
+.c-nav-footer {
+  border-top: 1px solid $_silver;
+  margin-top: $large-value;
+  padding-top: $medium-value;
+  margin-bottom: $extra-large-value;
+  button:last-child {
+    float: right;
+  }
+  button:first-child {
+    float: left;
+  }
+}
