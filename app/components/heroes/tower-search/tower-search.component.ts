@@ -3,23 +3,23 @@ import { Router }            from '@angular/router';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
-import { HeroSearchService } from '../shared/hero-search.service';
-import { Hero } from '../shared/hero';
+import { TowerSearchService } from '../shared/tower-search.service';
+import { Tower } from '../shared/hero'; 
 
 @Component({
   moduleId: module.id,
-  selector: 'hero-search',
-  templateUrl: 'hero-search.component.html',
-  styleUrls: [ 'hero-search.component.css' ],
-  providers: [HeroSearchService]
+  selector: 'tower-search',
+  templateUrl: 'tower-search.component.html',
+  styleUrls: [ 'tower-search.component.css' ],
+  providers: [TowerSearchService]
 })
 
-export class HeroSearchComponent implements OnInit {
-  heroes: Observable<Hero[]>;
+export class TowerSearchComponent implements OnInit {
+  towers: Observable<Tower[]>;
   private searchTerms = new Subject<string>();
   
   constructor(
-    private heroSearchService: HeroSearchService,
+    private towerSearchService: TowerSearchService,
     private router: Router) {}
   
   // Push a search term into the observable stream.
@@ -28,23 +28,23 @@ export class HeroSearchComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.heroes = this.searchTerms
+    this.towers = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
       .switchMap(term => term   // switch to new observable each time
         // return the http search observable
-        ? this.heroSearchService.search(term)
+        ? this.towerSearchService.search(term)
         // or the observable of empty heroes if no search term
-        : Observable.of<Hero[]>([]))
+        : Observable.of<Tower[]>([]))
       .catch(error => {
         // TODO: real error handling
         console.log(error);
-        return Observable.of<Hero[]>([]);
+        return Observable.of<Tower[]>([]);
       });
   }
   
-  gotoDetail(hero: Hero): void {
-    let link = ['/detail', hero._id];
+  gotoDetail(tower: Tower): void {
+    let link = ['/towers', tower._id];
     this.router.navigate(link);
   }
 }

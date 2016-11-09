@@ -10,7 +10,7 @@ import { TowersComponent }   from './towers-list/towers-list.component';
 import { HeroesComponent }      from './heroes-list/heroes-list.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { TowerDetailComponent }  from './tower-detail/tower-detail.component';
-import { HeroSearchComponent }  from './hero-search/hero-search.component';
+import { TowerSearchComponent }  from './tower-search/tower-search.component';
 import { HeroService }          from './shared/hero.service';
 import { SplitToTabPipe } from './shared/pipes/split-to-multi-tab.pipe';
 
@@ -29,7 +29,7 @@ import './rxjs-extensions';
     HeroDetailComponent,
     HeroesComponent,
     TowerDetailComponent,
-    HeroSearchComponent,
+    TowerSearchComponent,
     SplitToTabPipe
   ],
   providers: [ HeroService ],

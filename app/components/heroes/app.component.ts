@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <h1>{{title}}</h1>
     <nav class="c-nav">
       <a routerLink="/towers" routerLinkActive="active">List of Forms</a>
-      <a routerLink="/heroes" routerLinkActive="active">Search Form</a>
+      <tower-search></tower-search>
     </nav>
     <router-outlet></router-outlet>
   `

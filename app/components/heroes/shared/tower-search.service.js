@@ -10,20 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var HeroSearchService = (function () {
-    function HeroSearchService(http) {
+var TowerSearchService = (function () {
+    function TowerSearchService(http) {
         this.http = http;
+        this.towersUrl = 'http://localhost:8080/api/towers/?title='; // URL to web api
     }
-    HeroSearchService.prototype.search = function (term) {
+    TowerSearchService.prototype.search = function (term) {
         return this.http
-            .get("app/heroes/?name=" + term)
-            .map(function (r) { return r.json().data; });
+            .get("" + this.towersUrl + term)
+            .map(function (r) { return r.json(); });
+        //.toPromise()
+        //.then(response => response.json() as Tower[])
+        //.catch(this.handleError);
     };
-    HeroSearchService = __decorate([
+    TowerSearchService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], HeroSearchService);
-    return HeroSearchService;
+    ], TowerSearchService);
+    return TowerSearchService;
 }());
-exports.HeroSearchService = HeroSearchService;
-//# sourceMappingURL=hero-search.service.js.map
+exports.TowerSearchService = TowerSearchService;
+//# sourceMappingURL=tower-search.service.js.map

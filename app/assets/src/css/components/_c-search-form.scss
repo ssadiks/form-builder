@@ -1,0 +1,27 @@
+.c-search-form {
+    border: 1px solid;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+     @media only screen and (max-width : $small-screen) {
+        width: 100%;
+        margin-top: $small-value;
+    }
+    &__label {
+        margin: 0;
+    }
+    &__input#search-form {
+        height: 100%;
+    }
+    &__results {
+        position: absolute;
+        background: #e52032;
+        color: #fff;
+        width: 100%;
+    }
+    &__results__item {
+        border-bottom: 1px solid $_white;
+        padding: $extra-small-value $small-value;
+        cursor: pointer;
+    }
+}

@@ -8,12 +8,7 @@
     border-left: 1px solid #fff;
     width: 100%;
   }
-  &__view {
-    display: none;
-    @media only screen and (max-width : $small-screen) {
-        display: inline;
-    }
-  }
+
 }
 
 .c-block-list__fields .c-actions {

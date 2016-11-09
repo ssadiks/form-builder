@@ -59,12 +59,26 @@ var createTower = function (req, res) {
 * @returns void
 */
 var getTowers = function(req, res) {
-	Tower.find(function(err, towers) {
-		if (err)
-			res.send(err);
-
-		res.json(towers);
-	});
+  // Search term in title with insensitive case
+  var title = req.query['title'];
+  if(title !== undefined) {
+    Tower.aggregate([
+      { $match: { title: {$regex: title, $options : 'i'} } }
+    ], function(err, towers) {
+      if (err)
+        res.send(err);
+  
+      res.json(towers);
+    });    
+  } else {
+    Tower.find(function(err, towers) {
+      if (err)
+        res.send(err);
+  
+      res.json(towers);
+    });
+  }
+	
 }
 
 /**

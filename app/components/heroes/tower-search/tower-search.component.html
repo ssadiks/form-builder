@@ -1,0 +1,10 @@
+<div class="c-search-form">
+  <label for="search-form" class="c-search-form__label c-icon c-icon--search"></label>
+  <input #searchBox id="search-form"
+         (keyup)="search(searchBox.value)" placeholder="Search form" class="c-search-form__input"/>
+  <div class="c-search-form__results">
+    <div *ngFor="let tower of towers | async" (click)="gotoDetail(tower)" class="c-search-form__results__item" >
+      {{tower.title}}
+    </div>
+  </div>
+</div>

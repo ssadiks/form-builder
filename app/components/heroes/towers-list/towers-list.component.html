@@ -41,13 +41,13 @@
               <div class="o-grid__item u-flex">
                 <div class="c-actions o-grid o-grid--no-gutter o-grid--2 o-grid--3@sm">
                     <div class="o-grid__item u-hidden u-visible@sm u-visible@xs">
-                      <button class="c-actions__view c-icon c-icon--view" (click)="gotoTower(tower); $event.stopPropagation()"></button>
+                      <button class="c-icon c-icon--view" (click)="gotoTower(tower); $event.stopPropagation()"></button>
+                    </div>                    
+                    <div class="o-grid__item">
+                      <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
                     </div>
                     <div class="o-grid__item">
                       <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
-                    </div>
-                    <div class="o-grid__item">
-                      <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
                     </div>
                 </div>
               </div>              
@@ -55,6 +55,3 @@
       </li>
   </ul>
 </div>
-
-
-<hero-search></hero-search>

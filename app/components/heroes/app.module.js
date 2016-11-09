@@ -18,7 +18,7 @@ var towers_list_component_1 = require('./towers-list/towers-list.component');
 var heroes_list_component_1 = require('./heroes-list/heroes-list.component');
 var hero_detail_component_1 = require('./hero-detail/hero-detail.component');
 var tower_detail_component_1 = require('./tower-detail/tower-detail.component');
-var hero_search_component_1 = require('./hero-search/hero-search.component');
+var tower_search_component_1 = require('./tower-search/tower-search.component');
 var hero_service_1 = require('./shared/hero.service');
 var split_to_multi_tab_pipe_1 = require('./shared/pipes/split-to-multi-tab.pipe');
 require('./rxjs-extensions');
@@ -39,7 +39,7 @@ var AppModule = (function () {
                 hero_detail_component_1.HeroDetailComponent,
                 heroes_list_component_1.HeroesComponent,
                 tower_detail_component_1.TowerDetailComponent,
-                hero_search_component_1.HeroSearchComponent,
+                tower_search_component_1.TowerSearchComponent,
                 split_to_multi_tab_pipe_1.SplitToTabPipe
             ],
             providers: [hero_service_1.HeroService],

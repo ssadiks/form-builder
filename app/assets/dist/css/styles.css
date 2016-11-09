@@ -1885,16 +1885,6 @@ nav a.active {
     border-left: 1px solid #fff;
 }
 
-.c-actions__view {
-    display: none;
-}
-
-@media only screen and (max-width: 40em) {
-    .c-actions__view {
-        display: inline;
-    }
-}
-
 @media only screen and (max-width: 40em) {
     .c-block-list__fields .c-actions .c-icon {
         height: 4rem;
@@ -1920,6 +1910,41 @@ nav a.active {
 
 .c-nav-footer button:first-child {
     float: left;
+}
+
+.c-search-form {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid;
+}
+
+@media only screen and (max-width: 40em) {
+    .c-search-form {
+        width: 100%;
+        margin-top: 1.2rem;
+    }
+}
+
+.c-search-form__label {
+    margin: 0;
+}
+
+.c-search-form__input#search-form {
+    height: 100%;
+}
+
+.c-search-form__results {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    background: #e52032;
+}
+
+.c-search-form__results__item {
+    padding: .6rem 1.2rem;
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
 }
 
 .o-container input[type='text'],
