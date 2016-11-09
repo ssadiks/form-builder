@@ -1,13 +1,13 @@
 .c-adding {
   //border: 1px solid red;
   margin-bottom: $medium-value;
-  .cta-manage-form {
+  &__cta-manager {
     position: relative
   }
-  .cta-manage-form button {
+  &__cta-manager button {
     width: 100%;
   }
-  .cta-manage-form button::after {
+  &__cta-manager button::after {
     content: '';
     width: 0; 
     height: 0; 
@@ -19,7 +19,7 @@
     top: 50%;
     transform: translateY(-50%);
   }
-  .cta-manage-form.close button::after {
+  &__cta-manager.close button::after {
     content: '';
     width: 0; 
     height: 0; 

@@ -2,7 +2,7 @@
   
   <!--Add Field-->
   <div class="c-adding">
-    <div class="cta-manage-form" [class.close]="stateButton == 'inactive'">
+    <div class="c-adding__cta-manager" [class.close]="stateButton == 'inactive'">
       <button (click)="togglestates()">Add Field</button>
     </div>
     <form #f="ngForm" (ngSubmit)="add(tower, f.value, f.valid)" novalidate [@heroesState]="state" class="c-adding__form">
@@ -50,8 +50,8 @@
   <!--Form Built-->
   <div class="c-block-list">
   <div class="c-block-list__header o-grid">
-    <h2 class="c-block-list__title o-grid__item">{{ tower.title }}</h2>
-    <span class="c-block-list__count o-grid__item u-flex-item-fluid">{{ tower.heroes.length }} item(s)</span>
+    <h2 class="c-block-list__title o-grid__item u-flex-item-fluid">{{ tower.title }}</h2>
+    <span class="c-block-list__count o-grid__item">{{ tower.heroes.length }} item(s)</span>
   </div>
   <form id="{{ tower.name }}" name="{{ tower.name }}">
     <ul class="c-block-list__fields">     

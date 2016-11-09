@@ -1,6 +1,6 @@
 <div class="c-adding">
   <!--<h2>Add Form</h2>-->
-  <div class="cta-manage-form" [class.close]="stateButton == 'inactive'">
+  <div class="c-adding__cta-manager" [class.close]="stateButton == 'inactive'">
     <button (click)="togglestates()">Add Form</button>
   </div>
   <form #f="ngForm" (ngSubmit)="add(f.value, f.valid)" novalidate [@towersState]="state" class="c-adding__form">
@@ -38,11 +38,17 @@
       <li class="c-block-list__item" *ngFor="let tower of towers" (click)="gotoTower(tower)">
           <div class="o-grid o-grid--1@sm">
               <div class="o-grid__item u-flex-item-fluid"><span class="c-block-list__forms__item__title">{{tower.title}}</span></div>
-              <div class="o-grid__item">
-                <div class="c-actions">
-                    <button class="c-actions__view c-icon c-icon--view" (click)="gotoTower(tower); $event.stopPropagation()"></button>
-                    <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
-                    <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
+              <div class="o-grid__item u-flex">
+                <div class="c-actions o-grid o-grid--no-gutter o-grid--2 o-grid--3@sm">
+                    <div class="o-grid__item u-hidden u-visible@sm u-visible@xs">
+                      <button class="c-actions__view c-icon c-icon--view" (click)="gotoTower(tower); $event.stopPropagation()"></button>
+                    </div>
+                    <div class="o-grid__item">
+                      <button class="c-icon c-icon--trash" (click)="delete(tower); $event.stopPropagation()"></button>
+                    </div>
+                    <div class="o-grid__item">
+                      <button class="c-icon c-icon--pencil" (click)="gotoDetail(tower); $event.stopPropagation()"></button>
+                    </div>
                 </div>
               </div>              
           </div>

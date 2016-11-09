@@ -1,3 +1,15 @@
+.c-actions {
+    width: 100%;
+}
+
+.c-actions .c-icon {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-left: 1.2rem;
+    border-left: 1px solid #fff;
+}
+
 .c-actions__view {
     display: none;
 }

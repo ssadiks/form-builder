@@ -58,7 +58,7 @@ export class HeroesComponent implements OnInit {
     private location: Location
   ) {}
   
-  ngOnInit(): void {    
+  ngOnInit(): void {
     
     this.route.params.forEach((params: Params) => {
       let id = params['id'];
@@ -66,7 +66,7 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      _id: 1,
+      //_id: 1,
       type_field: this.type_fields[0].value,
       name: '',
       label: '',

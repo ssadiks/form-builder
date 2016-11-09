@@ -9,6 +9,10 @@
     margin-left: -$grid-gutter;
 }
 
+.o-grid--no-gutter {
+  margin-left: -$grid-no-gutter;
+}
+
 // grid childs
 .o-grid__item {
     box-sizing: border-box;
@@ -17,6 +21,9 @@
     min-height: 0;
     padding-bottom: $grid-spacing;
     padding-left: $grid-gutter;
+}
+.o-grid--no-gutter .o-grid__item {
+  padding-left: $grid-no-gutter;
 }
 
 // grid childs generator
@@ -45,5 +52,5 @@
 
 // grid childs extra small screen
 @media (max-width: $extra-small-screen) {
-    @include grid("xs", 2);
+    @include grid("xs", 3);
 }
