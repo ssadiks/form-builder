@@ -66,7 +66,7 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      //_id: 1,
+      _id: 1,
       type_field: this.type_fields[0].value,
       name: '',
       label: '',
@@ -87,6 +87,7 @@ export class HeroesComponent implements OnInit {
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
   console.log(h);
+  confirm('Do you want');
     if(isValid)
       this.heroService.createHero(tower, this.newHero)
         .then(hero => {
@@ -96,6 +97,7 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(tower: Tower, hero: Hero): void {
+    confirm('Do you wantss');
     this.heroService
         .deleteHero(tower._id, hero._id)
         .then(() => {

@@ -1914,6 +1914,7 @@ nav a.active {
 
 .c-search-form {
     position: relative;
+    z-index: 10;
     display: inline-block;
     vertical-align: top;
     border: 1px solid;
@@ -1927,7 +1928,10 @@ nav a.active {
 }
 
 .c-search-form__label {
+    font-size: .8em;
     margin: 0;
+    padding: .5em 0 0 .8em;
+    color: #e52032;
 }
 
 .c-search-form__input#search-form {

@@ -40,6 +40,7 @@ var TowerSearchComponent = (function () {
     TowerSearchComponent.prototype.gotoDetail = function (tower) {
         var link = ['/towers', tower._id];
         this.router.navigate(link);
+        //this.searchTerms = new Subject<string>();
     };
     TowerSearchComponent = __decorate([
         core_1.Component({

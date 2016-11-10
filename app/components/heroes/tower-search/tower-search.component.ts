@@ -28,6 +28,7 @@ export class TowerSearchComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    
     this.towers = this.searchTerms
       .debounceTime(300)        // wait for 300ms pause in events
       .distinctUntilChanged()   // ignore if next search term is same as previous
@@ -46,5 +47,6 @@ export class TowerSearchComponent implements OnInit {
   gotoDetail(tower: Tower): void {
     let link = ['/towers', tower._id];
     this.router.navigate(link);
+    //this.searchTerms = new Subject<string>();
   }
 }
