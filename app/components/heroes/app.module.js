@@ -21,6 +21,8 @@ var tower_detail_component_1 = require('./tower-detail/tower-detail.component');
 var tower_search_component_1 = require('./tower-search/tower-search.component');
 var hero_service_1 = require('./shared/hero.service');
 var split_to_multi_tab_pipe_1 = require('./shared/pipes/split-to-multi-tab.pipe');
+//import { BoxConfirmComponent }  from './box-confirm/box-confirm.component';
+//import { BoxConfirmService }          from './box-confirm/box-confirm.service';
 require('./rxjs-extensions');
 var AppModule = (function () {
     function AppModule() {

@@ -13,6 +13,9 @@ import { TowerDetailComponent }  from './tower-detail/tower-detail.component';
 import { TowerSearchComponent }  from './tower-search/tower-search.component';
 import { HeroService }          from './shared/hero.service';
 import { SplitToTabPipe } from './shared/pipes/split-to-multi-tab.pipe';
+//import { BoxConfirmComponent }  from './box-confirm/box-confirm.component';
+//import { BoxConfirmService }          from './box-confirm/box-confirm.service';
+
 
 import './rxjs-extensions';
 

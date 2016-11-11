@@ -39,7 +39,7 @@ var HeroesComponent = (function () {
                 .then(function (tower) { return _this.tower = tower; });
         });
         this.newHero = {
-            _id: 1,
+            //_id: 1,
             type_field: this.type_fields[0].value,
             name: '',
             label: '',
@@ -50,14 +50,11 @@ var HeroesComponent = (function () {
         };
     };
     HeroesComponent.prototype.togglestates = function () {
-        console.log('toto');
         this.state = (this.state === 'inactive' ? 'active' : 'inactive');
         this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
     };
     HeroesComponent.prototype.add = function (tower, h, isValid) {
         var _this = this;
-        console.log(h);
-        confirm('Do you want');
         if (isValid)
             this.heroService.createHero(tower, this.newHero)
                 .then(function (hero) {
@@ -67,15 +64,17 @@ var HeroesComponent = (function () {
     };
     HeroesComponent.prototype.delete = function (tower, hero) {
         var _this = this;
-        confirm('Do you wantss');
-        this.heroService
-            .deleteHero(tower._id, hero._id)
-            .then(function () {
-            _this.tower.heroes = _this.tower.heroes.filter(function (h) { return h !== hero; });
-            if (_this.selectedHero === hero) {
-                _this.selectedHero = null;
-            }
-        });
+        var confirmation = confirm('Do you want to delete this field ?');
+        if (confirmation !== false) {
+            this.heroService
+                .deleteHero(tower._id, hero._id)
+                .then(function () {
+                _this.tower.heroes = _this.tower.heroes.filter(function (h) { return h !== hero; });
+                if (_this.selectedHero === hero) {
+                    _this.selectedHero = null;
+                }
+            });
+        }
     };
     HeroesComponent.prototype.goBack = function () {
         this.location.back();

@@ -49,12 +49,15 @@ var TowersComponent = (function () {
     };
     TowersComponent.prototype.delete = function (tower) {
         var _this = this;
-        this.heroService
-            .deleteTower(tower._id)
-            .then(function () {
-            _this.towers = _this.towers.filter(function (t) { return t !== tower; });
-            //if (this.selectedHero === hero) { this.selectedHero = null; }
-        });
+        var confirmation = confirm('Do you want to delete this form ?');
+        if (confirmation !== false) {
+            this.heroService
+                .deleteTower(tower._id)
+                .then(function () {
+                _this.towers = _this.towers.filter(function (t) { return t !== tower; });
+                //if (this.selectedHero === hero) { this.selectedHero = null; }
+            });
+        }
     };
     TowersComponent.prototype.gotoDetail = function (tower) {
         var link = ['/towers/' + tower._id];

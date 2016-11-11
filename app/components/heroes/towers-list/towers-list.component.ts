@@ -78,17 +78,20 @@ export class TowersComponent implements OnInit {
   }
   
   delete(tower: Tower): void {
-    this.heroService
-        .deleteTower(tower._id)
-        .then(() => {
-          this.towers = this.towers.filter(t => t !== tower);
-          //if (this.selectedHero === hero) { this.selectedHero = null; }
-        });
+    let confirmation = confirm('Do you want to delete this form ?');
+    if(confirmation !== false) {
+      this.heroService
+          .deleteTower(tower._id)
+          .then(() => {
+            this.towers = this.towers.filter(t => t !== tower);
+            //if (this.selectedHero === hero) { this.selectedHero = null; }
+          });
+    }
   }
   
   gotoDetail(tower: Tower): void {
-      let link = ['/towers/' + tower._id];
-      this.router.navigate(link);
+    let link = ['/towers/' + tower._id];
+    this.router.navigate(link);    
   }
   
   gotoTower(tower: Tower): void {

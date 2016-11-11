@@ -66,7 +66,7 @@ export class HeroesComponent implements OnInit {
         .then(tower => this.tower = tower);
     });
     this.newHero = {
-      _id: 1,
+      //_id: 1,
       type_field: this.type_fields[0].value,
       name: '',
       label: '',
@@ -80,14 +80,11 @@ export class HeroesComponent implements OnInit {
   state: string = 'inactive';
   stateButton: string = 'inactive';
   togglestates() {
-    console.log('toto');
     this.state = (this.state === 'inactive' ? 'active' : 'inactive');
     this.stateButton = (this.stateButton === 'inactive' ? 'active' : 'inactive');
   }
   
   add(tower: Tower, h: Hero, isValid: boolean): void {
-  console.log(h);
-  confirm('Do you want');
     if(isValid)
       this.heroService.createHero(tower, this.newHero)
         .then(hero => {
@@ -97,13 +94,15 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(tower: Tower, hero: Hero): void {
-    confirm('Do you wantss');
+    let confirmation = confirm('Do you want to delete this field ?');
+    if(confirmation !== false) {
     this.heroService
         .deleteHero(tower._id, hero._id)
         .then(() => {
           this.tower.heroes = this.tower.heroes.filter(h => h !== hero);
           if (this.selectedHero === hero) { this.selectedHero = null; }
         });
+    }
   }
   
   goBack(): void {

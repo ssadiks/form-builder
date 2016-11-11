@@ -1,0 +1,6 @@
+<div *ngIf="displayBox === true" class="popup" style="border: 1px solid;text-align: center;">
+  <span>Title of the box</span>
+  <p>Text of the box {{ inpout }}</p>
+  <button (click)="cancel(false)">Cancel</button>
+  <button (click)="agree()">Ok</button>
+</div>
